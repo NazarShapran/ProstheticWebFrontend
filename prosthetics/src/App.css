@@ -4,32 +4,28 @@
   margin: 0%;
 }
 
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
+#root {
+  width: 100%;
+  background-color: #ffffff;
+} 
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: secondary-regular;
+  src: url(./common/fonts/Fira_Sans/FiraSans-Regular.ttf);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: primary;
+  src: url(./common/fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf);
 }
-
-.card {
-  padding: 2em;
+@font-face {
+  font-family: secondary-bold;
+  src: url(./common/fonts/Fira_Sans/FiraSans-Bold.ttf);
 }
-
-.read-the-docs {
-  color: #888;
+@font-face {
+  font-family: secondary-semibold;
+  src: url(./common/fonts/Fira_Sans/FiraSans-SemiBold.ttf);
+}
+@font-face {
+  font-family: secondary-medium;
+  src: url(./common/fonts/Fira_Sans/FiraSans-Medium.ttf);
 }

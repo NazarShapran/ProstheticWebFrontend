@@ -4,6 +4,7 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  font-family: secondary-medium;
 }
 
 .logo{
@@ -14,7 +15,7 @@
 /* Header Styles */
 .layout-header {
   background-color: #ffffff; /* White background as per the image */
-  padding: 1rem 2rem;
+  padding: 0px 16px;
   display: flex;
   justify-content: space-between; /* Logo on left, nav on right */
   align-items: center;
@@ -32,7 +33,7 @@
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* Reduced gap to match spacing in the image */
+  gap: 32px; 
 }
 
 .layout-header li {
@@ -42,24 +43,28 @@
 .layout-header a {
   color: #000000; /* Black for inactive links */
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .layout-header a:hover {
-  color: #26c6da; /* Teal on hover */
+  color: #64D9B9; /* Teal on hover */
 }
 
 /* Active link styling (for "Кабінет" in the image) */
 .layout-header a.active {
-  color: #26c6da; /* Teal for the active link */
-  font-weight: 600;
+  color: #64D9B9; /* Teal for the active link */
+  font-weight: 700;
 }
 
-/* Remove the button styling for SignIn since the image uses a plain link */
 .layout-header button {
-  display: none; /* Remove button styling as it's not in the image */
+  background: #64D9B9;
+  color: #ffffff;
+}
+
+.signin_icon {
+  margin-right: 4px; /* Space between icon and text */
 }
 
 /* Responsive Design */
@@ -78,7 +83,7 @@
 
 /* Footer Styles */
 .layout-footer {
-  background-color: #003087; /* Darker blue for contrast */
+  background-color: #262626; /* Darker blue for contrast */
   color: #ffffff;
   padding: 2rem 2rem;
   margin-top: auto; /* Pushes footer to bottom when content is short */
@@ -92,7 +97,6 @@
 
 .footer-container p {
   margin: 0.5rem 0;
-  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -104,9 +108,9 @@
 }
 
 .footer-actions button {
-  background-color: #ffd700;
-  color: #003087;
-  border: none;
+  background-color: #64D9B9;
+  color: #262626;
+  border: solid 1px #ffffff;
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
   cursor: pointer;
@@ -116,7 +120,8 @@
 }
 
 .footer-actions button:hover {
-  background-color: #ffec40;
+  background-color: #262626;
+  color: #64D9B9;
   transform: translateY(-2px);
 }
 
@@ -134,13 +139,25 @@
 }
 
 .footer-socials a {
-  color: #ffffff;
+  color: #64D9B9;
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .footer-socials a:hover {
   color: #ffd700;
+}
+
+.footer-text-primary {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: secondary-bold;
+}
+
+.footer-text-secondary {
+  color: #989792;
+  font-size: 16px;
+  font-family: secondary-semibold;
 }
 
 .footer-contacts ul {

@@ -67,6 +67,14 @@
   margin-right: 4px; /* Space between icon and text */
 }
 
+.signin_btn{
+  height: 48px;
+  width: 124px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .layout-header {
@@ -83,29 +91,36 @@
 
 /* Footer Styles */
 .layout-footer {
-  background-color: #262626; /* Darker blue for contrast */
+  background-color: #262626;
   color: #ffffff;
-  padding: 2rem 2rem;
-  margin-top: auto; /* Pushes footer to bottom when content is short */
+  padding: 0 16px;
+  margin-top: auto; 
+
 }
 
 .footer-container {
-  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1; 
 }
 
-.footer-container p {
-  margin: 0.5rem 0;
-  line-height: 1.5;
+.footer-decoration {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  transform: scale(0.65);
+  width: 100%; /* або 0.3, 0.75 — як тобі потрібно */
+  transform-origin: bottom left; /* або right — залежно від сторони */
 }
 
 .footer-actions {
   margin: 1.5rem 0;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 8px;
 }
+
 
 .footer-actions button {
   background-color: #64D9B9;
@@ -119,10 +134,22 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.btn-catalog {
+  background-color: #262626 !important;
+  color: #64D9B9 !important;
+  border: solid 1px #ffffff !important;
+}
+
+
 .footer-actions button:hover {
-  background-color: #262626;
-  color: #64D9B9;
+  /* background-color: #262626;
+  color: #64D9B9; */
   transform: translateY(-2px);
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: end;
 }
 
 .footer-socials ul {
@@ -160,13 +187,19 @@
   font-family: secondary-semibold;
 }
 
+.footer-contacts {
+  display: flex;
+  align-items: flex-start;
+}
+
 .footer-contacts ul {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: start;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .footer-contacts li {
@@ -186,12 +219,5 @@
 }
 
 .footer-contacts a:hover {
-  color: #ffd700;
+  color: #64D9B9;
 }
-
-.footer-container > p:last-child {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #b0c4de; /* Light blue-gray for copyright */
-}
-

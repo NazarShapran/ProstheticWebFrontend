@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink } from "react-router-dom";
-import Logo from "../svgs/logo_ReLife.svg?react";
+import Logo from "../svgs/logo_new.svg?react";
 import { PersonOutline } from "@mui/icons-material";
 
 const CustomLink = ({ to, children }) => (
@@ -25,7 +25,7 @@ const Header = () => {
         </li>
         <li>
           <CustomLink to="/signIn">
-            <button type="button" class="signin_btn" id="btnSignIn">
+            <button type="button" className="signin_btn" id="btnSignIn">
               <PersonOutline className="signin_icon" sx={{ fontSize: 24 }} />
               Кабінет
             </button>

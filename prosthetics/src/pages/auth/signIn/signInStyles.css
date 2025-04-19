@@ -1,0 +1,93 @@
+.sign-in-page {
+    height: 100vh;
+    width: 100%;
+    background-image: url('images/signIn.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sign-in-form-container {
+    background: linear-gradient(to bottom right, rgba(46, 107, 90, 0.2) 0%, rgba(106, 147, 176, 0.2) 50%, rgba(167, 139, 186, 0.2) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: hsla(0, 0%, 100%, 0.5) 1px solid;
+    gap: 20px;
+  }
+  
+  .sign-in-form-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: secondary-semibold;
+    color: #ffffff;
+  }
+  
+  .sign-in-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+  }
+  
+  .sign-in-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-family: secondary-regular;
+    color: white;
+  }
+  
+  .sign-in-form input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #64D9B9;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-top: 8px;
+  }
+  
+  .sign-in-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .sign-in-form button {
+    padding: 12px;
+    background-color: #64D9B9;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: secondary-semibold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sign-in-form button:hover {
+    background-color: #3fc1a0;
+  }
+  
+  .sign-in-note {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #ffffffb4;
+    font-family: secondary-regular;
+  }
+  
+  .sign-in-note a {
+    color: #64D9B9;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  

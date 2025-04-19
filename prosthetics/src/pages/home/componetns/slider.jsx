@@ -48,16 +48,15 @@ export default function SliderEmblaSimple() {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <div className="embla__slide" key={card.id}>
               <div className="card">
-                {/* 90-градусне коло в кутку */}
-                <div className="corner-accent"></div>
-
-                {/* Напівпрозорий блок для гласморфізму */}
+                <div
+                  className={`corner-accent ${
+                    index % 2 === 0 ? "left" : "right"
+                  }`}
+                ></div>
                 <div className="glass-overlay"></div>
-
-                {/* Контент */}
                 <img className="card-image" src={card.image} alt={card.id} />
                 <p>{card.text}</p>
               </div>

@@ -8,8 +8,8 @@
 }
 
 .logo{
-  width: 100px; /* Adjusted to fit the image */
-  height: 100px;
+  width: 85px; /* Adjusted to fit the image */
+  height: 85px;
 }
 
 /* Header Styles */
@@ -24,7 +24,7 @@
   top: 0;
   z-index: 1000;
   width: 100%;
-  height: 80px;
+  height: 70px;
 }
 
 /* Navigation styling */

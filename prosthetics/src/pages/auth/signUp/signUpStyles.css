@@ -1,0 +1,247 @@
+.sign-up-page {
+  height: 100vh;
+  width: 100%;
+  background-image: url("images/signUp.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-form-container {
+  background: linear-gradient(
+    to bottom right,
+    rgba(46, 107, 90, 0.2) 0%,
+    rgba(106, 147, 176, 0.2) 50%,
+    rgba(167, 139, 186, 0.2) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: hsla(0, 0%, 100%, 0.5) 1px solid;
+  gap: 20px;
+}
+
+.sign-up-form-container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-family: secondary-semibold;
+  color: #ffffff;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+}
+
+.sign-up-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-family: secondary-regular;
+  color: white;
+}
+
+.sign-up-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sign-up-form button {
+  padding: 12px;
+  background-color: #64d9b9;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: secondary-semibold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-up-form button:hover {
+  background-color: #3fc1a0;
+}
+
+.sign-up-note {
+  margin-top: -16px;
+  font-size: 14px;
+  color: #ffffffb4;
+  font-family: secondary-regular;
+}
+
+.sign-up-note a {
+  color: #64d9b9;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input input {
+  padding: 12px 12px 12px 42px;
+  border-radius: 8px;
+  border: 1px solid #64d9b9;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.step-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: #ffffffb4;
+  font-family: secondary-regular;
+  text-align: start;
+  width: 50%;
+  gap: 6px;
+}
+
+.step-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  gap: 8px;
+}
+  
+  .circle-outer {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .circle-inner {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .circle-inner .checkmark {
+    color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .circle-inner.done {
+    background-color: #64d9b9;
+  }
+  
+  .circle-inner.done .checkmark {
+    color: white;
+  }
+
+  .circle-inner.pending {
+    background-color: transparent;
+  }
+  
+  .circle-inner.pending .checkmark {
+    color: rgba(255, 255, 255, 0.765);
+  }
+  
+  .circle-inner.done {
+    background-color: #64d9b9;
+  }
+  
+  .circle-inner.done .checkmark {
+    color: white;
+  }
+
+.line {
+  height: 4px;
+  width: 160px;
+  background-color: white;
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.line.active {
+  background-color: #64d9b9;
+}
+
+.step.active p {
+  color: white;
+}
+
+.back-icon-button {
+    position: absolute;
+    top: 32px;
+    left: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0%;
+  }
+  
+  .rotated-icon {
+    transform: rotate(+90deg);
+    font-size: 36px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+  
+  .rotated-icon:hover {
+    color: #64d9b9;
+  }
+
+.step-text{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.step-text-title {
+    font-size: 14px;
+    color: #ffffffb4;
+}
+
+

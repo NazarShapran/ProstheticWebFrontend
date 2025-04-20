@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 16px;
+    gap: 40px;
   }
   
   .sign-in-form label {
@@ -47,15 +47,6 @@
     font-size: 16px;
     font-family: secondary-regular;
     color: white;
-  }
-  
-  .sign-in-form input {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #64D9B9;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    margin-top: 8px;
   }
   
   .sign-in-form input::placeholder {
@@ -79,7 +70,7 @@
   }
   
   .sign-in-note {
-    margin-top: 16px;
+    margin-top: -16px;
     font-size: 14px;
     color: #ffffffb4;
     font-family: secondary-regular;
@@ -91,3 +82,30 @@
     cursor: pointer;
   }
   
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .input {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input input {
+    padding: 12px 12px 12px 42px;
+    border-radius: 8px;
+    border: 1px solid #64D9B9;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 100%;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 12px;
+    color: #ffffff;
+    pointer-events: none;
+  }

@@ -111,8 +111,8 @@
   bottom: 0;
   z-index: 0;
   transform: scale(0.65);
-  width: 100%; /* або 0.3, 0.75 — як тобі потрібно */
-  transform-origin: bottom left; /* або right — залежно від сторони */
+  width: 100%; 
+  transform-origin: bottom left; 
 }
 
 .footer-actions {

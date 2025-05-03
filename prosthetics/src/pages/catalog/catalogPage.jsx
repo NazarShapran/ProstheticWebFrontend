@@ -77,7 +77,7 @@ const CatalogPage = () => {
           alt="Prosthetics"
           className="hero-image"
         />
-        <div className="hero-text">Доступні протези</div>
+        <div className="catalog-hero-text">Доступні протези</div>
       </div>
       <div className="catalog-content">
         <div className="product-list">

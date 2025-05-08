@@ -4,8 +4,10 @@ import {
   Key,
   Person,
   Phone,
+  CalendarToday,
   ArrowCircleDown,
 } from "@mui/icons-material";
+import { useSignUp } from "../signUp/hooks/useSignUp";
 import "./signUpStyles.css";
 
 export default function SignUpPage() {
@@ -15,7 +17,10 @@ export default function SignUpPage() {
     password: "",
     name: "",
     phone: "",
+    birthDate: "",
   });
+
+  const { handleRegister, loading, error } = useSignUp();
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -30,17 +35,21 @@ export default function SignUpPage() {
     setStep(1);
   };
 
-  const handleSubmit = (e) => {
-    setStep(3);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting", formData);
-    // тут буде запит до бекенду або інша логіка
+    await handleRegister(
+      formData.name,
+      formData.phone,
+      formData.email,
+      formData.password,
+      formData.birthDate
+    );
   };
 
   return (
     <div className="sign-up-page">
       <div className="sign-up-form-container">
-        {step === 2 || step === 3 && (
+        {(step === 2 || step === 3) && (
           <button
             type="button"
             onClick={handleBack}
@@ -99,6 +108,7 @@ export default function SignUpPage() {
                   placeholder="Введіть електронну пошту"
                   value={formData.email}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="input">
@@ -109,6 +119,7 @@ export default function SignUpPage() {
                   placeholder="Введіть пароль до кабінету"
                   value={formData.password}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -125,6 +136,7 @@ export default function SignUpPage() {
                   placeholder="Введіть ПІБ"
                   value={formData.name}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="input">
@@ -135,10 +147,25 @@ export default function SignUpPage() {
                   placeholder="Введіть номер телефону"
                   value={formData.phone}
                   onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="input">
+                <CalendarToday className="input-icon" />
+                <input
+                  type="date"
+                  name="birthDate"
+                  placeholder="Введіть дату народження"
+                  value={formData.birthDate}
+                  onChange={handleChange}
+                  required
                 />
               </div>
             </div>
-            <button type="submit">Зареєструватися</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Реєстрація..." : "Зареєструватися"}
+            </button>
+            {error && <p style={{ color: "red" }}>{error}</p>}
           </form>
         )}
         <p className="sign-up-note">

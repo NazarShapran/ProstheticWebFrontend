@@ -1,15 +1,21 @@
 import React from "react";
-import {NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../svgs/logo_new.svg?react";
 import { PersonOutline } from "@mui/icons-material";
-
-const CustomLink = ({ to, children }) => (
-  <NavLink to={to} className={({ isActive }) => (isActive ? "active" : "")}>
-    {children}
-  </NavLink>
-);
+import { CustomLink } from "./CustomLink";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleCabinetClick = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/profile");
+    } else {
+      navigate("/signIn");
+    }
+  };
+
   return (
     <header className="layout-header">
       <Logo className="logo" />
@@ -24,12 +30,15 @@ const Header = () => {
           <CustomLink to="/about">Про нас</CustomLink>
         </li>
         <li>
-          <CustomLink to="/signIn">
-            <button type="button" className="signin_btn" id="btnSignIn">
-              <PersonOutline className="signin_icon" sx={{ fontSize: 24 }} />
-              Кабінет
-            </button>
-          </CustomLink>
+          <button
+            type="button"
+            className="signin_btn"
+            id="btnSignIn"
+            onClick={handleCabinetClick}
+          >
+            <PersonOutline className="signin_icon" sx={{ fontSize: 24 }} />
+            Кабінет
+          </button>
         </li>
       </ul>
     </header>

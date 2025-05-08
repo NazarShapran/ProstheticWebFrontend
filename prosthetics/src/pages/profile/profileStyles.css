@@ -1,0 +1,106 @@
+/* Фон всієї сторінки */
+.profile-page {
+    background-image: url('images/profile_bg.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+  /* Секції */
+  .profile-section {
+    background-color: rgba(255, 255, 255, 0.3); /* трохи прозорості */
+    backdrop-filter: blur(50px); /* блюр тільки на фоні */
+    -webkit-backdrop-filter: blur(50px); /* для Safari */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 800px;
+  }
+  
+  /* Заголовки секцій */
+  .profile-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  /* Кнопки */
+  button {
+    padding: 10px 15px;
+    background-color: #64d9b9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #52bfa1;
+  }
+  
+  /* Заявки */
+  .application-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+  }
+  
+  .application-item hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 8px 0;
+  }
+  
+  /* Іконки статусу */
+  .status-icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+  
+  .status-icon.pending {
+    background-color: orange;
+  }
+  
+  .status-icon.approved {
+    background-color: green;
+  }
+  
+  .status-icon.rejected {
+    background-color: red;
+  }
+  
+  /* Інпути */
+  .profile-page input{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  input:focus {
+    border-color: #64d9b9;
+    outline: none;
+  }
+  
+  .delete-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  

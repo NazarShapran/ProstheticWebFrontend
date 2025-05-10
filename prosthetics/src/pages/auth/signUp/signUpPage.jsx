@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Email,
   Key,
@@ -19,16 +19,62 @@ export default function SignUpPage() {
     phone: "",
     birthDate: "",
   });
+  const [formErrors, setFormErrors] = useState({});
 
   const { handleRegister, loading, error } = useSignUp();
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+  };
+
+  const validateStep1 = () => {
+    const errors = {};
+    if (!formData.password) {
+      errors.password = "Введіть пароль";
+    } else {
+      if (formData.password.length < 6) {
+        errors.password = "Пароль має бути не менше 6 символів";
+      }
+      if (!/[A-Z]/.test(formData.password)) {
+        errors.password = "Пароль має містити хоча б одну велику літеру";
+      }
+      if (!/[a-z]/.test(formData.password)) {
+        errors.password = "Пароль має містити хоча б одну малу літеру";
+      }
+      if (!/[0-9]/.test(formData.password)) {
+        errors.password = "Пароль має містити хоча б одну цифру";
+      }
+    }
+    return errors;
+  };
+
+  const validateStep2 = () => {
+    const errors = {};
+    if (!formData.name) {
+      errors.name = "Введіть ПІБ";
+    } else if (formData.name.length < 3 || formData.name.length > 255) {
+      errors.name = "ПІБ має бути від 3 до 255 символів";
+    }
+    if (!formData.phone) {
+      errors.phone = "Введіть номер телефону";
+    } else if (!/^\+?[0-9]{10,15}$/.test(formData.phone)) {
+      errors.phone = "Телефон має містити 10–15 цифр і може починатись з '+'";
+    }
+    if (!formData.birthDate) {
+      errors.birthDate = "Введіть дату народження";
+    }
+    return errors;
   };
 
   const handleNext = (e) => {
     e.preventDefault();
-    setStep(2);
+    const errors = validateStep1();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+    } else {
+      setStep(2);
+    }
   };
 
   const handleBack = () => {
@@ -37,13 +83,18 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleRegister(
-      formData.name,
-      formData.phone,
-      formData.email,
-      formData.password,
-      formData.birthDate
-    );
+    const errors = validateStep2();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+    } else {
+      await handleRegister(
+        formData.name,
+        formData.phone,
+        formData.email,
+        formData.password,
+        formData.birthDate
+      );
+    }
   };
 
   return (
@@ -111,6 +162,7 @@ export default function SignUpPage() {
                   required
                 />
               </div>
+              {formErrors.email && <p className="error-text">{formErrors.email}</p>}
               <div className="input">
                 <Key className="input-icon" />
                 <input
@@ -122,6 +174,7 @@ export default function SignUpPage() {
                   required
                 />
               </div>
+              {formErrors.password && <p className="error-text">{formErrors.password}</p>}
             </div>
             <button type="submit">Далі</button>
           </form>
@@ -139,6 +192,7 @@ export default function SignUpPage() {
                   required
                 />
               </div>
+              {formErrors.name && <p className="error-text">{formErrors.name}</p>}
               <div className="input">
                 <Phone className="input-icon" />
                 <input
@@ -150,6 +204,7 @@ export default function SignUpPage() {
                   required
                 />
               </div>
+              {formErrors.phone && <p className="error-text">{formErrors.phone}</p>}
               <div className="input">
                 <CalendarToday className="input-icon" />
                 <input
@@ -161,6 +216,7 @@ export default function SignUpPage() {
                   required
                 />
               </div>
+              {formErrors.birthDate && <p className="error-text">{formErrors.birthDate}</p>}
             </div>
             <button type="submit" disabled={loading}>
               {loading ? "Реєстрація..." : "Зареєструватися"}

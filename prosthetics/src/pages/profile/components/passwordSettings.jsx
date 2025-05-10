@@ -1,36 +1,73 @@
 import React, { useState } from "react";
+import LockIcon from "@mui/icons-material/Lock";
+import { useUserFromLocalStorage } from "../hooks/useUserFromLocalStorage";
 
-const ChangePassword = ({ onChangePassword }) => {
-  const [current, setCurrent] = useState("");
-  const [newPass, setNewPass] = useState("");
-  const [confirm, setConfirm] = useState("");
+const ChangePassword = ({ onSubmit }) => {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const user = useUserFromLocalStorage();
 
-  const handleSubmit = () => {
-    onChangePassword(current, newPass, confirm);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newPassword !== confirmNewPassword) {
+      alert("Нові паролі не збігаються!");
+      return;
+    }
+    if (onSubmit) onSubmit({ currentPassword, newPassword });
   };
 
   return (
     <div className="profile-section change-password">
-      <h3>Зміна пароля</h3>
-      <input
-        type="password"
-        placeholder="Введіть поточний пароль"
-        value={current}
-        onChange={(e) => setCurrent(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Введіть новий пароль"
-        value={newPass}
-        onChange={(e) => setNewPass(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Підтвердіть новий пароль"
-        value={confirm}
-        onChange={(e) => setConfirm(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Змінити</button>
+      <h3>Налаштування кабінету</h3>
+      <h4>Зміна пароля</h4>
+      <form onSubmit={handleSubmit}>
+        <div className="profile-section-content">
+          <div className="column">
+            <div className="input-wrapper">
+              <label>Введіть поточний пароль</label>
+              <div className="input-with-icon">
+                <LockIcon className="input-icon" />
+                <input
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  placeholder="Введіть поточний пароль"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="column">
+            <div className="input-wrapper">
+              <label>Введіть новий пароль</label>
+              <div className="input-with-icon">
+                <LockIcon className="input-icon" />
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  placeholder="Введіть новий пароль"
+                />
+              </div>
+            </div>
+            <div className="input-wrapper">
+              <label>Підтвердіть новий пароль</label>
+              <div className="input-with-icon">
+                <LockIcon className="input-icon" />
+                <input
+                  type="password"
+                  value={confirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                  placeholder="Підтвердіть новий пароль"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="button-group">
+          <button type="submit">Змінити</button>
+        </div>
+      </form>
     </div>
   );
 };

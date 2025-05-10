@@ -109,3 +109,22 @@
     color: #ffffff;
     pointer-events: none;
   }
+
+  .error-message {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+  justify-content: center;
+  font-family: secondary-regular;
+}
+
+.error-icon {
+  margin-right: 6px;
+  font-size: 18px;
+  color: yellow;
+}
+
+

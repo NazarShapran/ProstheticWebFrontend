@@ -244,4 +244,12 @@
     color: #ffffffb4;
 }
 
+.error-text {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: -16px;
+  margin-bottom: 16px;
+  font-family: secondary-regular;
+}
+
 

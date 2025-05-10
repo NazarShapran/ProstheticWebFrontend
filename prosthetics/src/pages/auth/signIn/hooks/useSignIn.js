@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SignInService } from "../service/signInService";
 import { jwtDecode } from "jwt-decode";
 
@@ -21,11 +21,18 @@ export const useSignIn = () => {
       window.location.href = "/";
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.message || "Login failed. Please try again.");
+      setError(err.response?.data?.message || "Неправильна електронна пошта або пароль.");
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return {
     loading,

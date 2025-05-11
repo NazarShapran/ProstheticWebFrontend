@@ -1,20 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import {
-  Instagram,
-  Facebook,
-  Twitter,
-  Email,
-  Phone,
-  Telegram,
-} from "@mui/icons-material";
+import { Instagram, Facebook, Twitter, Email, Phone, Telegram } from "@mui/icons-material";
+import  CustomLink  from "./CustomLink";
 import Decorations from "../svgs/GroupFooter.svg?react";
-
-const CustomLink = ({ to, children }) => (
-  <NavLink to={to} className={({ isActive }) => (isActive ? "active" : "")}>
-    {children}
-  </NavLink>
-);
 
 const Footer = () => {
   return (
@@ -23,24 +10,24 @@ const Footer = () => {
         <div className="footer-socials">
           <ul>
             <li>
-              <CustomLink to="https://www.instagram.com/">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                 <Instagram />
-              </CustomLink>
+              </a>
             </li>
             <li>
-              <CustomLink to="https://www.facebook.com/">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                 <Facebook />
-              </CustomLink>
+              </a>
             </li>
             <li>
-              <CustomLink to="https://twitter.com/">
+              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
                 <Twitter />
-              </CustomLink>
+              </a>
             </li>
             <li>
-              <CustomLink to="https://web.telegram.org/">
+              <a href="https://web.telegram.org/" target="_blank" rel="noopener noreferrer">
                 <Telegram />
-              </CustomLink>
+              </a>
             </li>
           </ul>
         </div>

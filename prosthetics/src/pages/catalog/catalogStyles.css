@@ -60,6 +60,7 @@
     border: #64D9B9 solid 1px;
     padding: 15px;
     text-align: center;
+    height: max-content;
   }
 
   .product-card p {

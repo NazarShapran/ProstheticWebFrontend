@@ -1,0 +1,129 @@
+/* Main page container */
+.form-page-form-page {
+  min-height: 100vh;
+  background-color: rgb(184, 223, 212, 0.4);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: secondary-regular;
+}
+
+/* Form container with blurred background */
+.form-page-form-container {
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Heading */
+.form-page-form-container h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: secondary-medium;
+  color: black;
+  text-align: start;
+}
+
+/* Subheading */
+.form-page-form-container h4 {
+  margin: 20px 0 10px;
+  font-size: 20px;
+  font-family: secondary-medium, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Subheading paragraph */
+.form-page-form-container p.form-page-subheading {
+  margin: 10px 0;
+  font-size: 14px;
+  font-family: secondary-regular, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Input wrapper for each field */
+.form-page-input-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.form-page-input-wrapper label {
+  margin-bottom: 8px;
+  font-family: secondary-regular, Arial, sans-serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Input fields, select, and textarea */
+.form-page-input-wrapper input,
+.form-page-input-wrapper select,
+.form-page-input-wrapper textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #64D9B9;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.7);
+  font-family: secondary-regular, Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* Textarea specific styling */
+.form-page-input-wrapper textarea {
+  height: 150px;
+  resize: none;
+}
+
+/* Select (dropdown) specific styling */
+.form-page-input-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Divider */
+.form-page-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 20px 0;
+}
+
+/* Button group for submit button */
+.form-page-button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Submit button */
+.form-page-button {
+  padding: 12px 30px;
+  background-color: #64D9B9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: secondary-medium, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-page-button:hover {
+  background-color: transparent;
+    color: #64D9B9;
+    border: 1px solid #64D9B9;
+}
+
+.form-page-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

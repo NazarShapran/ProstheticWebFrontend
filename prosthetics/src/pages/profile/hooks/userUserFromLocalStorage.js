@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useUserFromLocalStorage = () => {
+export const userUserFromLocalStorage = () => {
   const [user, setUser] = useState({
     fullName: '',
     phone: '',

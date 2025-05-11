@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import LockIcon from "@mui/icons-material/Lock";
-import { useUserFromLocalStorage } from "../hooks/useUserFromLocalStorage";
+import { userUserFromLocalStorage } from "../hooks/userUserFromLocalStorage";
 
 const ChangePassword = ({ onSubmit }) => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
-  const user = useUserFromLocalStorage();
+  const user = userUserFromLocalStorage();
 
   const handleSubmit = (e) => {
     e.preventDefault();

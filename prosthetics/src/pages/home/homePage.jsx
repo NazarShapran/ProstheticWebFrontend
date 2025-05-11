@@ -1,6 +1,6 @@
-import React from "react";
 import Slider from "./componetns/slider";
 import StoryCard from "./componetns/cards";
+import CustomLink from "../../common/components/CustomLink"
 import "./homeStyles.css";
 
 export default function HomePage() {
@@ -14,7 +14,9 @@ export default function HomePage() {
           </p>
         </div>
         <div className="hero-btn-wrapper">
-          <button className="hero-btn">Залишити заявку</button>
+          <CustomLink to="/form">
+            <button className="hero-btn">Залишити заявку</button>
+          </CustomLink>
         </div>
         <img
           className="hero-image"

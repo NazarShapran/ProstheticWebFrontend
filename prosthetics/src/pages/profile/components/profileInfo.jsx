@@ -1,5 +1,5 @@
 import React from "react";
-import { useUserFromLocalStorage } from "../hooks/useUserFromLocalStorage";
+import { userUserFromLocalStorage } from "../hooks/userUserFromLocalStorage";
 import { useLogout } from "../hooks/useLogout";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -7,7 +7,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MarkunreadIcon from '@mui/icons-material/Markunread';
 
 const PersonalInfo = ({ onEdit }) => {
-  const user = useUserFromLocalStorage();
+  const user = userUserFromLocalStorage();
   const logout = useLogout();
 
   return (

@@ -1,40 +1,55 @@
 import React from "react";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ filteredProsthetics }) => {
+ 
+  if (!filteredProsthetics || filteredProsthetics.length === 0) {
+    return <p>Протези не знайдено</p>;
+  }
+
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} className="product-image" />
-      <h2 className="product-title">{product.name}</h2>
+    <>
+      {filteredProsthetics.map((prosthetic) => (
+        <div key={prosthetic.id} className="product-card">
+          <img
+            src="/images/slider2.png"
+            alt={prosthetic.title}
+            className="product-image"
+          />
+          <h2 className="product-title">{prosthetic.title}</h2>
 
-      <div className="product-info">
-        <div className="info-item">
-          <span className="info-label">Тип:</span>
-          <span className="info-value">{product.type}</span>
-        </div>
+          <div className="product-info">
+            <div className="info-item">
+              <span className="info-label">Тип:</span>
+              <span className="info-value">{prosthetic.type.title}</span>
+            </div>
 
-        <div className="info-item">
-          <span className="info-label">Призначення:</span>
-          <span className="info-value">{product.purpose}</span>
-        </div>
+            <div className="info-item">
+              <span className="info-label">Призначення:</span>
+              <span className="info-value">
+                {prosthetic.functionality.title}
+              </span>
+            </div>
 
-        <div className="info-item">
-          <span className="info-label">Вага:</span>
-          <span className="info-value">{product.weight}</span>
-        </div>
+            <div className="info-item">
+              <span className="info-label">Вага:</span>
+              <span className="info-value">{prosthetic.weight}</span>
+            </div>
 
-        <div className="info-item status-item">
-          <span
-            className={`info-value ${
-              product.status === "Available"
-                ? "available-text"
-                : "unavailable-text"
-            }`}
-          >
-            {product.status === "Available" ? "Доступно" : "Не доступно"}
-          </span>
+            <div className="info-item status-item">
+              <span
+                className={`info-value ${
+                  prosthetic.status === "Available"
+                    ? "available-text"
+                    : "unavailable-text"
+                }`}
+              >
+                {prosthetic.status === "Available" ? "Доступно" : "Не доступно"}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ))}
+    </>
   );
 };
 

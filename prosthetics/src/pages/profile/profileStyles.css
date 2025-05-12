@@ -180,7 +180,18 @@ button.delete-btn:disabled {
 
 /* Іконки статусу */
 .status-icon {
-  font-size: 28px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.application-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-text {
+  font-weight: 500;
 }
 
 .status-icon.approved {

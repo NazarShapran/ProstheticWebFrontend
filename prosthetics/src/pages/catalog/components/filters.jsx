@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "@mui/material/Slider";
 
-const Filters = () => {
+const Filters = ({ onFilterChange }) => {
   const [selectedFilters, setSelectedFilters] = useState({
     type: [],
     functionality: [],
@@ -11,12 +11,15 @@ const Filters = () => {
 
   const [weight, setWeight] = useState([0, 10]);
 
+  useEffect(() => {
+    onFilterChange({ filters: selectedFilters, weightRange: weight });
+  }, [selectedFilters, weight, onFilterChange]);
+
   const handleCheckboxChange = (category, value) => {
     setSelectedFilters((prev) => {
-      const current = prev[category];
-      const updated = current.includes(value)
-        ? current.filter((item) => item !== value)
-        : [...current, value];
+      const updated = prev[category].includes(value)
+        ? prev[category].filter((item) => item !== value)
+        : [...prev[category], value];
       return { ...prev, [category]: updated };
     });
   };
@@ -24,24 +27,6 @@ const Filters = () => {
   const handleSliderChange = (event, newValue) => {
     setWeight(newValue);
   };
-
-  const typeOptions = ["Функціональні", "Косметичні", "Спортивні", "Робочі"];
-  const functionalityOptions = [
-    "Пасивні",
-    "Механічні",
-    "Біонічні",
-    "Міоелектричні",
-  ];
-  const amputationOptions = [
-    "Кистьовий",
-    "Передпліччя",
-    "Плечовий",
-    "Стопа",
-    "Гомілковий",
-    "Стегновий",
-    "Гіп-дизарткуляційний",
-  ];
-  const materialOptions = ["Карбон", "Пластик", "Металеві сплави"];
 
   const renderCheckboxGroup = (title, category, options) => (
     <div className="filter-group">
@@ -63,18 +48,32 @@ const Filters = () => {
 
   return (
     <div className="filters">
-      {renderCheckboxGroup("Тип", "type", typeOptions)}
-      {renderCheckboxGroup(
-        "Функціональність",
-        "functionality",
-        functionalityOptions
-      )}
-      {renderCheckboxGroup(
-        "Рівень ампутації",
-        "amputationLevel",
-        amputationOptions
-      )}
-      {renderCheckboxGroup("Матеріал", "material", materialOptions)}
+      {renderCheckboxGroup("Тип", "type", [
+        "Функціональні",
+        "Косметичні",
+        "Спортивні",
+        "Робочі",
+      ])}
+      {renderCheckboxGroup("Функціональність", "functionality", [
+        "Пасивні",
+        "Механічні",
+        "Біонічні",
+        "Міоелектричні",
+      ])}
+      {renderCheckboxGroup("Рівень ампутації", "amputationLevel", [
+        "Кистьовий",
+        "Передпліччя",
+        "Плечовий",
+        "Стопа",
+        "Гомілковий",
+        "Стегновий",
+        "Гіп-дизарткуляційний",
+      ])}
+      {renderCheckboxGroup("Матеріал", "material", [
+        "Карбон",
+        "Пластик",
+        "Металеві сплави",
+      ])}
 
       <div className="filter-group">
         <h4>Вага</h4>
@@ -88,17 +87,9 @@ const Filters = () => {
             color: "#64D9B9",
             height: 4,
             maxWidth: "90%",
-            "& .MuiSlider-thumb": {
-              width: 16,
-              height: 16,
-            },
-            "& .MuiSlider-track": {
-              border: "none",
-            },
-            "& .MuiSlider-rail": {
-              opacity: 0.2,
-              backgroundColor: "#64D9B9",
-            },
+            "& .MuiSlider-thumb": { width: 16, height: 16 },
+            "& .MuiSlider-track": { border: "none" },
+            "& .MuiSlider-rail": { opacity: 0.2, backgroundColor: "#64D9B9" },
             "& .MuiSlider-valueLabel": {
               backgroundColor: "#64D9B9",
               color: "white",

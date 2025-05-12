@@ -14,6 +14,9 @@ export class RequestService {
   async getRequestById(id) {
     return await this.httpClient.get(`/${id}`);
   }
+  async getRequestsByUserId(userId) {
+    return await this.httpClient.get(`/getByUserId/${userId}`);
+  }
     async createRequest(request) {
         return await this.httpClient.post("/create", request);
     }

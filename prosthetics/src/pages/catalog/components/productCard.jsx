@@ -31,6 +31,13 @@ const ProductCard = ({ filteredProsthetics }) => {
             </div>
 
             <div className="info-item">
+              <span className="info-label">Рівень ампутації:</span>
+              <span className="info-value">
+                {prosthetic.amputationLevel.title}
+              </span>
+            </div>
+
+            <div className="info-item">
               <span className="info-label">Вага:</span>
               <span className="info-value">{prosthetic.weight}</span>
             </div>

@@ -1,35 +1,36 @@
+import React from "react";
 import Slider from "./componetns/slider";
 import StoryCard from "./componetns/cards";
-import CustomLink from "../../common/components/CustomLink"
+import CustomLink from "../../common/components/CustomLink";
 import "./homeStyles.css";
 
 export default function HomePage() {
   return (
     <div className="home-page">
       <div className="home-hero-container">
-        <div className="hero-text">
-          <h1>Твоя сила – у твоїх кроках!</h1>
-          <p className="home-hero-text">
-            Отримай сучасний протез та повернися до активного життя
-          </p>
-        </div>
-        <div className="hero-btn-wrapper">
-          <CustomLink to="/form">
-            <button className="hero-btn">Залишити заявку</button>
-          </CustomLink>
-        </div>
         <img
-          className="hero-image"
-          src="/images/Hero_section_image.png"
+          className="home-hero-image"
+          src="/images/new_hero_img.png"
           alt="hero"
         />
+        <div className="home-hero-text-content">
+          <h1>Твоя сила – <br />у твоїх кроках!</h1>
+          <p className="home-hero-text">
+            Отримай сучасний протез та повернися <br /> до активного життя
+          </p>
+          {/* <div className="home-hero-btn-wrapper">
+            <CustomLink to="/form">
+              <button className="home-hero-btn">Залишити заявку</button>
+            </CustomLink>
+          </div> */}
+        </div>
       </div>
-      <div className="content">
+      <div className="home-content">
         <Slider />
-        <div>
+        <div className="home-stories">
           <StoryCard
             title="Історичне сходження"
-            text="Четверо українських військових з протезами нижніх кінцівок і військова, яка пережила важкі бойові поранення, здійснили сходження на Кіліманджаро. На горі висотою 5 895 метрів разом з іншими альпіністами українці символічно розгорнули наш стяг. Експедиція тривала 6 днів: 4 дні підйому та 2 спуску. "
+            text="Четверо українських військових з протезами нижніх кінцівок і військова, яка пережила важкі бойові поранення, здійснили сходження на Кіліманджаро. На горі висотою 5 895 метрів разом з іншими альпіністами українці символічно розгорнули наш стяг. Експедиція тривала 6 днів: 4 дні підйому та 2 спуску."
             imageUrl="/images/card1.webp"
           />
           <StoryCard
@@ -39,7 +40,7 @@ export default function HomePage() {
           />
           <StoryCard
             title="Технологія, що повернула радість"
-            text="Яків Балакірев – військовий, який до повномасштабної війни працював веброзробником. У 2022 році він отримав повістку й без вагань став до лав захисників. Спочатку проходив навчання у Львові, потім служив у 32-му реактивному артилерійському полку, а згодом — у 37-й бригаді під Авдіївкою."
+            text="Яків Балакірев – військовий, який до повномасштабної війни працював веброзробником. У 2022 році він отримав повістку й без вагань став до лав захисників. Спочатку проходив навчання у Львові, потім служив у 32-му реактивним артилерійському полку, а згодом — у 37-й бригаді під Авдіївкою."
             imageUrl="/images/card3.jpg"
           />
         </div>

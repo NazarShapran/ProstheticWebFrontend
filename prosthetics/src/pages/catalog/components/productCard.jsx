@@ -1,15 +1,32 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ filteredProsthetics }) => {
+  const navigate = useNavigate();
  
   if (!filteredProsthetics || filteredProsthetics.length === 0) {
     return <p>Протези не знайдено</p>;
   }
 
+  const handleCardClick = (prostheticId) => {
+    navigate(`/catalog/${prostheticId}`);
+  };
+
   return (
     <>
       {filteredProsthetics.map((prosthetic) => (
-        <div key={prosthetic.id} className="product-card">
+        <div
+          key={prosthetic.id}
+          className="product-card"
+          onClick={() => handleCardClick(prosthetic.id)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleCardClick(prosthetic.id);
+            }
+          }}
+        >
           <img
             src="/images/slider2.png"
             alt={prosthetic.title}

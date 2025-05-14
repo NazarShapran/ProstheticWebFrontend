@@ -1,0 +1,180 @@
+.prosthetic-details-page {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prosthetic-details-loading,
+.prosthetic-details-error {
+  text-align: center;
+  padding: 40px;
+}
+
+.prosthetic-details-error h2 {
+  color: #ff4444;
+  margin-bottom: 16px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #64D9B9;
+  font-family: secondary-medium;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 24px;
+  transition: color 0.3s ease;
+}
+
+.back-button:hover {
+  color: #4BBFA0;
+}
+
+.prosthetic-details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.prosthetic-details-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prosthetic-details-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.prosthetic-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.prosthetic-details-title {
+  font-family: secondary-semibold;
+  font-size: 32px;
+  color: #262626;
+  margin: 0;
+}
+
+.prosthetic-details-status {
+  margin-bottom: 8px;
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: secondary-medium;
+  font-size: 14px;
+}
+
+.status-indicator.available {
+  background-color: rgba(100, 217, 185, 0.1);
+  color: #64D9B9;
+}
+
+.status-indicator.unavailable {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.prosthetic-details-specifications {
+  background-color: #f8f8f8;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.prosthetic-details-specifications h2 {
+  font-family: secondary-semibold;
+  font-size: 24px;
+  color: #262626;
+  margin: 0 0 16px 0;
+}
+
+.specification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.specification-item:last-child {
+  border-bottom: none;
+}
+
+.specification-label {
+  font-family: secondary-regular;
+  color: #6D6D6D;
+}
+
+.specification-value {
+  font-family: secondary-medium;
+  color: #262626;
+}
+
+.prosthetic-details-description {
+  margin-top: 24px;
+}
+
+.prosthetic-details-description h2 {
+  font-family: secondary-semibold;
+  font-size: 24px;
+  color: #262626;
+  margin: 0 0 16px 0;
+}
+
+.prosthetic-details-description p {
+  font-family: secondary-regular;
+  color: #6D6D6D;
+  line-height: 1.6;
+}
+
+.request-button {
+  background-color: #64D9B9;
+  color: white;
+  border: none;
+  border-radius: 28px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-family: secondary-medium;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 16px;
+  width: fit-content;
+}
+
+.request-button:hover {
+  background-color: #4BBFA0;
+}
+
+@media (max-width: 768px) {
+  .prosthetic-details-page {
+    padding: 20px;
+  }
+
+  .prosthetic-details-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .prosthetic-details-title {
+    font-size: 24px;
+  }
+
+  .prosthetic-details-specifications h2,
+  .prosthetic-details-description h2 {
+    font-size: 20px;
+  }
+} 

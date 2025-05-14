@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const CatalogPage = () => {
   const { searchQuery, handleSearchChange } = useSearch();
-  const { prosthetics, loading } = useGetAllProsthetics();
+  const { prosthetics, loading, hasMore, loadMore } = useGetAllProsthetics();
   const [filters, setFilters] = useState({
     filters: {
       type: [],
@@ -27,6 +27,10 @@ const CatalogPage = () => {
     weightRange: filters.weightRange,
   });
 
+  const handleLoadMore = async () => {
+    await loadMore();
+  };
+
   return (
     <div className="catalog-page">
       <div className="hero-section">
@@ -36,7 +40,24 @@ const CatalogPage = () => {
 
       <div className="catalog-content">
         <div className="product-list">
-          {loading ? <p>Завантаження...</p> : <ProductCard filteredProsthetics={filteredProsthetics} />}
+          {loading && prosthetics.length === 0 ? (
+            <p>Завантаження...</p>
+          ) : (
+            <>
+              <ProductCard filteredProsthetics={filteredProsthetics} />
+              {hasMore && filteredProsthetics.length === prosthetics.length && (
+                <div className="load-more-container">
+                  <button
+                    className="load-more-button"
+                    onClick={handleLoadMore}
+                    disabled={loading}
+                  >
+                    {loading ? "Завантаження..." : "Показати більше"}
+                  </button>
+                </div>
+              )}
+            </>
+          )}
         </div>
 
         <div className="filters-section">

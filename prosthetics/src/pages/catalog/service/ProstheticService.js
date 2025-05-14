@@ -8,10 +8,10 @@ export class ProstheticService {
       signal,
     });
   }
-  async getAllProshetics() {
-    return await this.httpClient.get("/list");
+  async getAllProshetics(page = 1, pageSize = 6) {
+    return await this.httpClient.get(`/list?page=${page}&pageSize=${pageSize}`);
   }
   async getProstheticById(id) {
-    return await this.httpClient.get(`/${id}`);
+    return await this.httpClient.get(`get/${id}`);
   }
 }

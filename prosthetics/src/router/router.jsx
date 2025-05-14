@@ -6,6 +6,7 @@ import SignInPage from "../pages/auth/signIn/signInPage";
 import SignUpPage from "../pages/auth/signUp/signUpPage";
 import Layout from "../common/components/layout";
 import CatalogPage from "../pages/catalog/catalogPage";
+import ProstheticDetailsPage from "../pages/prostheticDetails/prostheticDetailsPage";
 import AboutPage from "../pages/about/aboutPage";
 import FormPage from "../pages/form/formPage";
 import ProfilePage from "../pages/profile/profilePage";
@@ -25,6 +26,7 @@ const Router = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="catalog" element={<CatalogPage />} />
+          <Route path="catalog/:id" element={<ProstheticDetailsPage />} />
           <Route path="about" element={<AboutPage />} />
           
           <Route

@@ -140,22 +140,33 @@
   line-height: 1.6;
 }
 
+.prosthetic-details-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
 .request-button {
   background-color: #64D9B9;
-  color: white;
+  color: #262626;
   border: none;
   border-radius: 28px;
   padding: 16px 32px;
   font-size: 16px;
   font-family: secondary-medium;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 16px;
-  width: fit-content;
+  transition: all 0.3s ease;
 }
 
 .request-button:hover {
   background-color: #4BBFA0;
+  transform: translateY(-2px);
+}
+
+.request-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
 }
 
 @media (max-width: 768px) {
@@ -176,5 +187,14 @@
   .prosthetic-details-specifications h2,
   .prosthetic-details-description h2 {
     font-size: 20px;
+  }
+
+  .prosthetic-details-actions {
+    margin-top: 16px;
+  }
+
+  .request-button {
+    width: 100%;
+    padding: 12px 24px;
   }
 } 

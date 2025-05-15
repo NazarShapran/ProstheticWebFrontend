@@ -1,8 +1,10 @@
 import React from "react";
 import Slider from "./componetns/slider";
 import StoryCard from "./componetns/cards";
-import CustomLink from "../../common/components/CustomLink";
 import "./homeStyles.css";
+import Partners from "./componetns/partners";
+import Reviews from './componetns/reviews';
+
 
 export default function HomePage() {
   return (
@@ -18,14 +20,11 @@ export default function HomePage() {
           <p className="home-hero-text">
             Отримай сучасний протез та повернися <br /> до активного життя
           </p>
-          {/* <div className="home-hero-btn-wrapper">
-            <CustomLink to="/form">
-              <button className="home-hero-btn">Залишити заявку</button>
-            </CustomLink>
-          </div> */}
         </div>
       </div>
       <div className="home-content">
+        <Partners />
+        <Reviews />
         <Slider />
         <div className="home-stories">
           <StoryCard

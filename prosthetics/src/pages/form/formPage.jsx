@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { userUserFromLocalStorage } from "../profile/hooks/userUserFromLocalStorage";
 import { useFormatDateForInput } from "./hooks/useFormatDateForInput";
 import { useGetAllProsthetics } from "../catalog/hooks/useGetAllProsthetics";
@@ -6,7 +7,10 @@ import { useCreateRequest } from "./hooks/useCreateRequest";
 import "./FormStyles.css";
 
 export default function FormPage() {
-  const [prosthesis, setProsthesis] = useState("");
+  const location = useLocation();
+  const selectedProstheticId = location.state?.selectedProstheticId || "";
+  
+  const [prosthesis, setProsthesis] = useState(selectedProstheticId);
   const [description, setDescription] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -16,12 +20,19 @@ export default function FormPage() {
     prosthetics,
     loading: prostheticsLoading,
     error: prostheticsError,
-  } = useGetAllProsthetics();
+  } = useGetAllProsthetics(true); 
   const {
     createRequest,
     loading: requestLoading,
     error: requestError,
   } = useCreateRequest();
+
+  // Update prosthesis state when selectedProstheticId changes
+  useEffect(() => {
+    if (selectedProstheticId) {
+      setProsthesis(selectedProstheticId);
+    }
+  }, [selectedProstheticId]);
 
   const fullName = user?.given_name || "";
   const phoneNumber = user?.phone_number || "";
@@ -32,7 +43,7 @@ export default function FormPage() {
     event.preventDefault();
 
     if (!user?.sub || !prosthesis || !description) {
-      alert("Будь ласка, заповніть всі обов’язкові поля.");
+      alert("Будь ласка, заповніть всі обов'язкові поля.");
       return;
     }
 
@@ -56,7 +67,7 @@ export default function FormPage() {
       <div className="form-page-form-container">
         <h1>Оформлення заявки</h1>
         <p className="form-page-subheading">
-          Перевірте ваші дані та заповніть інформацію нижче
+          Перевірте ваші дані та змініть її при потребі в кабінеті користувача
         </p>
         <form onSubmit={handleSubmit}>
           <div className="form-page-display-info">
@@ -78,12 +89,13 @@ export default function FormPage() {
           <div className="form-page-input-wrapper">
             {prostheticsLoading ? (
               <p>Завантаження протезів...</p>
-            ) : prostheticsError && prosthetics.length === 0 ? (
+            ) : prostheticsError ? (
               <p>Помилка при завантаженні протезів</p>
             ) : (
               <select
                 value={prosthesis}
                 onChange={(e) => setProsthesis(e.target.value)}
+                required
               >
                 <option value="">Оберіть протез</option>
                 {prosthetics.map((p) => (

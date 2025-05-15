@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../svgs/logo_new.svg?react";
+import Logo from "../../common/svgs/logo.svg?react";
 import { PersonOutline } from "@mui/icons-material";
 import CustomLink from "./CustomLink";
 

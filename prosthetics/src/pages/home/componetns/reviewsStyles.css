@@ -1,0 +1,140 @@
+.home-reviews-container {
+  padding: 4rem 2rem;
+}
+
+.home-reviews-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.home-reviews-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-reviews-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.home-review-card {
+  position: relative;
+  padding: 24px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.home-review-card-bg-1 {
+  background: url('../../../common/svgs/review-card-bg.svg') no-repeat center;
+  background-size: 100% 100%;
+}
+
+.home-review-card-bg-2 {
+  background: url('../../../common/svgs/review-card-bg-2.svg') no-repeat center;
+  background-size: 100% 100%;
+}
+
+.home-review-card:hover {
+  transform: translateY(-5px);
+}
+
+.home-review-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+/* Стилі для першого ряду */
+.home-review-card-bg-1 .home-review-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+  max-height: 200px;
+  min-height: 200px;
+}
+
+.home-review-card-bg-1 .home-review-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.home-review-card-bg-1 .home-review-quote-icon {
+  position: absolute;
+  right: 44px;
+  bottom: 8px;
+  opacity: 0.8;
+}
+
+/* Стилі для другого ряду */
+.home-review-card-bg-2 .home-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.home-review-card-bg-2 .home-review-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.home-review-card-bg-2 .home-review-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  max-height: 200px;
+  min-height: 200px;
+}
+
+.home-review-card-bg-2 .home-review-quote-icon {
+  position: static;
+  opacity: 0.8;
+}
+
+.home-review-author {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.home-review-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.home-review-quote-icon img {
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 768px) {
+  .home-reviews-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .home-review-card {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .home-reviews-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+} 

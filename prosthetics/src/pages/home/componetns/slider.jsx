@@ -2,6 +2,7 @@ import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useGetAllProsthetics } from "../../catalog/hooks/useGetAllProsthetics";
+import { useNavigate } from 'react-router-dom';
 
 export default function SliderEmblaSimple() {
   const { prosthetics, loading, error } = useGetAllProsthetics();
@@ -12,8 +13,17 @@ export default function SliderEmblaSimple() {
     },
     [Autoplay({ delay: 3000 })]
   );
+  const navigate = useNavigate();
 
   const limitedProsthetics = prosthetics.slice(0, 6);
+
+  const handleRequestClick = () => {
+    navigate('/form');
+  };
+
+  const handleDetailsClick = (prostheticId) => {
+    navigate(`/catalog/${prostheticId}`);
+  };
 
   if (loading) return <p>Завантаження...</p>;
   // if (error) return <p>Сталася помилка при завантаженні протезів</p>;
@@ -41,8 +51,24 @@ export default function SliderEmblaSimple() {
                 </div>
                 <p className="card-text">{p.description}</p>
                 <div className="card-actions">
-                  <button className="card-button-cta">Залишити заявку</button>
-                  <button className="card-button-secondary">Переглянути</button>
+                  <button 
+                    className="card-button-cta"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRequestClick(p.id);
+                    }}
+                  >
+                    Залишити заявку
+                  </button>
+                  <button 
+                    className="card-button-secondary"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDetailsClick(p.id);
+                    }}
+                  >
+                    Переглянути
+                  </button>
                 </div>
               </div>
             </div>

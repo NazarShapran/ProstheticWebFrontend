@@ -10,6 +10,10 @@ export default function ProstheticDetailsPage() {
 
   const { prosthetic, loading, error } = useProstheticDetails(id);
 
+  const handleRequestClick = () => {
+    navigate('/form', { state: { selectedProstheticId: id } });
+  };
+
   if (loading) {
     return <div className="prosthetic-details-loading">Завантаження...</div>;
   }
@@ -96,14 +100,14 @@ export default function ProstheticDetailsPage() {
             </div>
           )}
 
-          {prosthetic.status === "Available" && (
+          <div className="prosthetic-details-actions">
             <button
-              onClick={() => navigate("/form")}
+              onClick={handleRequestClick}
               className="request-button"
             >
               Залишити заявку
             </button>
-          )}
+          </div>
         </div>
       </div>
 

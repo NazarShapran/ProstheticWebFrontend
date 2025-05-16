@@ -2,6 +2,13 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useProstheticDetails } from "./hooks/useProstheticDetails";
 import Reviews from "./components/Reviews";
+import availableIcon from "../../assets/available-icon.svg";
+import unavailableIcon from "../../assets/unavailable-icon.svg";
+import typeIcon from "../../assets/type.svg";
+import functionalityIcon from "../../assets/functionality.svg";
+import amputationLevelIcon from "../../assets/amputation-level.svg";
+import materialIcon from "../../assets/material.svg";
+import weightIcon from "../../assets/weight.svg";
 import "./prostheticDetailsStyles.css";
 
 export default function ProstheticDetailsPage() {
@@ -54,6 +61,11 @@ export default function ProstheticDetailsPage() {
                 prosthetic.status === "Available" ? "available" : "unavailable"
               }`}
             >
+              <img 
+                src={prosthetic.status === "Available" ? availableIcon : unavailableIcon}
+                alt={prosthetic.status === "Available" ? "Доступно" : "Не доступно"}
+                className="prosthetic-details-status-icon"
+              />
               {prosthetic.status === "Available" ? "Доступно" : "Не доступно"}
             </span>
           </div>
@@ -62,33 +74,48 @@ export default function ProstheticDetailsPage() {
             <h2>Характеристики</h2>
 
             <div className="specification-item">
-              <span className="specification-label">Тип:</span>
+              <div className="specification-label">
+                <img src={typeIcon} alt="Тип" className="specification-icon" />
+                <span>Тип:</span>
+              </div>
               <span className="specification-value">{prosthetic.type.title}</span>
             </div>
 
             <div className="specification-item">
-              <span className="specification-label">Призначення:</span>
+              <div className="specification-label">
+                <img src={functionalityIcon} alt="Призначення" className="specification-icon" />
+                <span>Призначення:</span>
+              </div>
               <span className="specification-value">
                 {prosthetic.functionality.title}
               </span>
             </div>
 
             <div className="specification-item">
-              <span className="specification-label">Рівень ампутації:</span>
+              <div className="specification-label">
+                <img src={amputationLevelIcon} alt="Рівень ампутації" className="specification-icon" />
+                <span>Рівень ампутації:</span>
+              </div>
               <span className="specification-value">
                 {prosthetic.amputationLevel.title}
               </span>
             </div>
 
             <div className="specification-item">
-              <span className="specification-label">Матеріал:</span>
+              <div className="specification-label">
+                <img src={materialIcon} alt="Матеріал" className="specification-icon" />
+                <span>Матеріал:</span>
+              </div>
               <span className="specification-value">
                 {prosthetic.material.title}
               </span>
             </div>
 
             <div className="specification-item">
-              <span className="specification-label">Вага:</span>
+              <div className="specification-label">
+                <img src={weightIcon} alt="Вага" className="specification-icon" />
+                <span>Вага:</span>
+              </div>
               <span className="specification-value">{prosthetic.weight} кг</span>
             </div>
           </div>

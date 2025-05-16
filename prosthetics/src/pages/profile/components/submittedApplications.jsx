@@ -34,7 +34,7 @@ const SubmittedApplications = () => {
           <div className="application-details">
             <span className="application-title">{app.prosthetic.title}</span>
             <div className="date-status-group">
-              <span className="application-date">{new Date(app.createdAt).toLocaleDateString()}</span>
+              <span className="application-date">{new Date(app.date).toLocaleDateString()}</span>
               <div className="application-status">
                 {getStatusIcon(app.status.title)}
                 <span className="status-text">{app.status.title}</span>

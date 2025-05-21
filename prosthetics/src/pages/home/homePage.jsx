@@ -1,31 +1,79 @@
 import React from "react";
+import { motion, useInView } from "motion/react";
 import Slider from "./componetns/slider";
 import StoryCard from "./componetns/cards";
 import "./homeStyles.css";
 import Partners from "./componetns/partners";
 import Reviews from './componetns/reviews';
 
-
 export default function HomePage() {
+  const partnersRef = React.useRef(null);
+  const sliderRef = React.useRef(null);
+  const reviewsRef = React.useRef(null);
+
+  const isPartnersInView = useInView(partnersRef, { once: true });
+  const isSliderInView = useInView(sliderRef, { once: true });
+  const isReviewsInView = useInView(reviewsRef, { once: true });
+
   return (
     <div className="home-page">
-      <div className="home-hero-container">
-        <img
+      <motion.div 
+        className="home-hero-container"
+        animate={{ opacity: [0, 1] }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.img
           className="home-hero-image"
           src="/images/new_hero_img.png"
           alt="hero"
+          animate={{ scale: [1.2, 1] }}
+          transition={{ duration: 1.2 }}
         />
-        <div className="home-hero-text-content">
-          <h1>Твоя сила – <br />у твоїх кроках!</h1>
-          <p className="home-hero-text">
+        <motion.div 
+          className="home-hero-text-content"
+          animate={{ x: [-100, 0], opacity: [0, 1] }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          <motion.h1
+            animate={{ y: [20, 0], opacity: [0, 1] }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            Твоя сила – <br />у твоїх кроках!
+          </motion.h1>
+          <motion.p 
+            className="home-hero-text"
+            animate={{ y: [20, 0], opacity: [0, 1] }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+          >
             Отримай сучасний протез та повернися <br /> до активного життя
-          </p>
-        </div>
-      </div>
+          </motion.p>
+        </motion.div>
+      </motion.div>
       <div className="home-content">
-        <Partners />
-        <Reviews />
-        <Slider />
+        <motion.div
+          ref={partnersRef}
+          animate={isPartnersInView ? { y: [50, 0], opacity: [0, 1] } : {}}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <Partners />
+        </motion.div>
+        
+        <motion.div
+          ref={sliderRef}
+          animate={isSliderInView ? { y: [50, 0], opacity: [0, 1] } : {}}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <Slider />
+        </motion.div>
+        
+        <motion.div
+          ref={reviewsRef}
+          animate={isReviewsInView ? { y: [50, 0], opacity: [0, 1] } : {}}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <Reviews />
+        </motion.div>
+        
         <div className="home-stories">
           <StoryCard
             title="Історичне сходження"

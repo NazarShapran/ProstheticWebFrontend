@@ -46,7 +46,7 @@
 /* Heading */
 .home-hero-text-content h1 {
   font-family: primary;
-  color: #64D9B9;
+  color: #73A965;
   font-size: 48px;
   margin: 0;
   line-height: 1.4;
@@ -69,7 +69,7 @@
 
 /* Button */
 .home-hero-btn {
-  background-color: #64D9B9;
+  background-color: #73A965;
   color: #262626;
   font-family: secondary-semibold;
   font-size: 24px;
@@ -138,7 +138,7 @@
   flex-direction: column;
   padding: 20px;
   color: white;
-  box-shadow: 0 4px 12px 0 #64D9B9;
+  box-shadow: 0 4px 12px 0 #73A965;
 }
 
 .card-image {
@@ -159,7 +159,7 @@
 .card-heading {
   font-family: secondary-semibold;
   font-size: 24px;
-  color: #64D9B9;
+  color: #73A965;
   margin: 0 0 4px 0;
   z-index: 3;
 }
@@ -193,7 +193,7 @@
 }
 
 .card-button-cta {
-  background-color: #64D9B9;
+  background-color: #73A965;
   color: #262626;
   font-family: secondary-semibold;
   font-size: 16px;
@@ -205,24 +205,24 @@
 }
 
 .card-button-cta:hover {
-  background-color: #4BBFA0;
+  background-color: #496B40;
 }
 
-.card-button-secondary {
+.home-card-button-secondary {
   background-color: transparent;
   color: #ffffff;
   font-family: secondary-regular;
   font-size: 16px;
   padding: 8px 16px;
-  border: 1.5px solid #64D9B9;
+  border: 1.5px solid #73A965;
   border-radius: 28px;
   cursor: pointer;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.card-button-secondary:hover {
-  color: #4BBFA0;
-  border-color: #4BBFA0;
+.home-card-button-secondary:hover {
+  color: #496B40;
+  border-color: #496B40;
   background-color: transparent;
 }
 
@@ -230,7 +230,7 @@
   position: absolute;
   width: 120px;
   height: 120px;
-  background-color: #64d9ba97;
+  background-color: #73A965;
   z-index: 1;
   pointer-events: none;
 }
@@ -331,7 +331,7 @@
   font-size: 32px;
   font-family: secondary-semibold;
   letter-spacing: 1px;
-  color: #64D9B9;
+  color: #73A965;
   margin: 0;
 }
 
@@ -347,7 +347,7 @@
 .read-more {
   color: #ffffff;
   background-color: transparent;
-  border: #64D9B9 1px solid !important;
+  border: #73A965 1px solid !important;
   font-family: secondary-regular;
   font-size: 18px;
   padding: 8px 16px;

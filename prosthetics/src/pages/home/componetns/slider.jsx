@@ -61,7 +61,7 @@ export default function SliderEmblaSimple() {
                     Залишити заявку
                   </button>
                   <button 
-                    className="card-button-secondary"
+                    className="home-card-button-secondary"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleDetailsClick(p.id);

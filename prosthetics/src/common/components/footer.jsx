@@ -33,13 +33,13 @@ const Footer = () => {
           <ul>
             <li>
               <a href="tel:+380123456789">
-                <Phone sx={{ color: "#64D9B9" }} />
+                <Phone sx={{ color: "#73A965" }} />
                 +38 (012) 345-67-89
               </a>
             </li>
             <li>
               <a href="mailto:0r0oU@example.com">
-                <Email sx={{ color: "#64D9B9" }} />
+                <Email sx={{ color: "#73A965" }} />
                 0r0oU@example.com
               </a>
             </li>

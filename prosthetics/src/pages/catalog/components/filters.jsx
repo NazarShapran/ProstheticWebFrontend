@@ -84,14 +84,14 @@ const Filters = ({ onFilterChange }) => {
           min={0}
           max={10}
           sx={{
-            color: "#64D9B9",
+            color: "#73A965",
             height: 4,
             maxWidth: "90%",
             "& .MuiSlider-thumb": { width: 16, height: 16 },
             "& .MuiSlider-track": { border: "none" },
-            "& .MuiSlider-rail": { opacity: 0.2, backgroundColor: "#64D9B9" },
+            "& .MuiSlider-rail": { opacity: 0.2, backgroundColor: "#73A965" },
             "& .MuiSlider-valueLabel": {
-              backgroundColor: "#64D9B9",
+              backgroundColor: "#73A965",
               color: "white",
             },
           }}

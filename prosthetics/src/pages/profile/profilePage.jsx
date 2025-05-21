@@ -5,14 +5,38 @@ import ChangePassword from "./components/passwordSettings";
 import DeleteAccount from "./components/profileDelete";
 import "./profileStyles.css";
 
+// Import icons
+import personIcon from "../../assets/person.svg";
+import listIcon from "../../assets/list.svg";
+import settingsIcon from "../../assets/account-setting.svg";
+
 const ProfilePage = () => {
-  const [activeTab, setActiveTab] = useState("personal"); // Default tab
+  const [activeTab, setActiveTab] = useState("cabinet"); // Default tab
 
   const tabs = [
-    { id: "personal", label: "Особиста інформація", component: <PersonalInfo /> },
-    { id: "applications", label: "Подані заявки", component: <SubmittedApplications /> },
-    { id: "password", label: "Змінити пароль", component: <ChangePassword /> },
-    { id: "delete", label: "Видалити акаунт", component: <DeleteAccount /> },
+    { 
+      id: "cabinet", 
+      label: "Кабінет", 
+      icon: personIcon,
+      component: <PersonalInfo /> 
+    },
+    { 
+      id: "applications", 
+      label: "Подані заявки", 
+      icon: listIcon,
+      component: <SubmittedApplications /> 
+    },
+    { 
+      id: "settings", 
+      label: "Налаштування", 
+      icon: settingsIcon,
+      component: (
+        <div className="settings-container">
+          <ChangePassword />
+          <DeleteAccount />
+        </div>
+      ) 
+    },
   ];
 
   return (
@@ -24,7 +48,8 @@ const ProfilePage = () => {
             className={`tab-button ${activeTab === tab.id ? "active" : ""}`}
             onClick={() => setActiveTab(tab.id)}
           >
-            {tab.label}
+            <img src={tab.icon} alt={tab.label} className="tab-icon" />
+            <span>{tab.label}</span>
           </button>
         ))}
       </div>

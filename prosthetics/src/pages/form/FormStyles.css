@@ -60,7 +60,7 @@
 .form-page-input-wrapper textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #64D9B9;
+  border: 1px solid #73A965;
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.7);
   font-family: secondary-regular, Arial, sans-serif;
@@ -79,7 +79,7 @@
 .form-page-select {
   width: 100%;
   padding: 12px;
-  border: 1px solid #64D9B9;
+  border: 1px solid #73A965;
   border-radius: 6px;
   background-color: white;
   font-family: secondary-regular;
@@ -123,7 +123,7 @@
 /* Submit button */
 .form-page-button {
   padding: 12px 32px;
-  background-color: #64D9B9;
+  background-color: #73A965;
   color: white;
   border: none;
   border-radius: 8px;
@@ -200,4 +200,38 @@
 .form-page-display-info strong {
   font-family: secondary-medium;
   margin-right: 8px;
+}
+
+.form-input {
+  border: 1px solid #73A965;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-family: secondary-regular;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.form-textarea {
+  border: 1px solid #73A965;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-family: secondary-regular;
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.form-submit-button {
+  background-color: #73A965;
+  color: #262626;
+  border: none;
+  border-radius: 50px;
+  padding: 20px 40px;
+  font-size: 20px;
+  font-family: secondary-medium;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }

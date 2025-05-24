@@ -6,7 +6,6 @@
   width: 100%;
   max-width: 1376px;
   margin: 0 auto;
-  font-family: secondary-medium;
 }
 
 /* Logo styles */
@@ -55,8 +54,8 @@
   color: #000000;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 500;
   transition: color 0.3s ease;
+  font-family: secondary-medium;
 }
 
 .header-nav a:hover {
@@ -160,14 +159,14 @@
 
 .footer-text-primary {
   font-size: 24px;
-  font-weight: 700;
-  font-family: secondary-bold;
+  font-family: primary-bold;
+  letter-spacing: 1px;
   margin: 0;
 }
 
 .footer-text-secondary {
   color: #989792;
-  font-size: 16px;
+  font-size: 18px;
   font-family: secondary-semibold;
   margin: 0;
 }

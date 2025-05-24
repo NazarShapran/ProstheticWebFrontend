@@ -36,7 +36,7 @@
 .home-hero-text-content {
   position: absolute;
   bottom: 30px;
-  left: 20px;
+  left: 10px;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -45,17 +45,16 @@
 
 /* Heading */
 .home-hero-text-content h1 {
-  font-family: primary;
+  font-family: primary-bold;
   color: #73A965;
-  font-size: 48px;
+  font-size: 54px;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /* Subtitle */
 .home-hero-text {
-  font-family: secondary-semibold;
-  color: #000000;
+  font-family: secondary-medium;
   font-size: 24px;
   margin: 0;
   line-height: 1.5;
@@ -192,7 +191,7 @@
   z-index: 3;
 }
 
-.card-button-cta {
+.home-card-button-cta {
   background-color: #73A965;
   color: #262626;
   font-family: secondary-semibold;
@@ -204,7 +203,7 @@
   transition: background-color 0.3s ease;
 }
 
-.card-button-cta:hover {
+.home-card-button-cta:hover {
   background-color: #496B40;
 }
 
@@ -329,7 +328,6 @@
 
 .story-content h3 {
   font-size: 32px;
-  font-family: secondary-semibold;
   letter-spacing: 1px;
   color: #73A965;
   margin: 0;

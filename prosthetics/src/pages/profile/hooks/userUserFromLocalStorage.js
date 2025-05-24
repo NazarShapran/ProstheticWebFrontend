@@ -1,24 +1,18 @@
-import { useState, useEffect } from "react";
-
 export const userUserFromLocalStorage = () => {
-  const [user, setUser] = useState({
-    fullName: '',
-    phone: '',
-    birthDate: '',
-    email: ''
-  });
-
-  useEffect(() => {
+  try {
     const userData = localStorage.getItem('user');
     if (userData) {
-      try {
-        const parsedUser = JSON.parse(userData);
-        setUser(parsedUser);
-      } catch (error) {
-        console.error('Помилка парсингу user з localStorage', error);
-      }
+      return JSON.parse(userData);
     }
-  }, []);
-
-  return user;
+  } catch (error) {
+    console.error('Помилка парсингу user з localStorage', error);
+  }
+  
+  return {
+    given_name: '',
+    email: '',
+    phone_number: '',
+    birthdate: '',
+    sub: ''
+  };
 };

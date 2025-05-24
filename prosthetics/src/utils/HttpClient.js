@@ -46,6 +46,11 @@ export class HttpClient {
         console.info("Request was cancelled");
       } else if (error instanceof AxiosError) {
         console.error("Request failed with error", error.response?.statusText);
+        console.error("Error details:", {
+          status: error.response?.status,
+          data: error.response?.data,
+          headers: error.response?.headers
+        });
       } else {
         console.error("Unexpected error occurred", error.message);
       }

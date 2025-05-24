@@ -23,7 +23,6 @@ const SubmittedApplications = () => {
   };
 
   if (loading) return <p>Завантаження заявок...</p>;
-  if (error) return <p>Помилка при завантаженні заявок</p>;
   if (requests.length === 0) return <p>У вас ще немає заявок</p>;
 
   return (

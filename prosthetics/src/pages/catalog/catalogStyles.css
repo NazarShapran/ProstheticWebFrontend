@@ -1,8 +1,4 @@
-.catalog-page {
-    font-family: Arial, sans-serif;
-  }
-  
-  .hero-section {
+.hero-section {
     position: relative;
     height: 500px;
     width: 100%;
@@ -19,7 +15,7 @@
   .catalog-hero-text {
     width: auto;
     position: absolute;
-    font-family: primary;
+    font-family: primary-bold;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -72,7 +68,7 @@
   .product-card p {
     color: #6D6D6D;
     font-family: secondary-regular;
-    font-family: 16px;
+    font-size: 16px;
   }
   
   .product-image {
@@ -123,8 +119,7 @@
   
   .available-text {
     color: #73A965;
-    font-family: secondary-regular;
-    
+    font-family: secondary-medium;
   }
   
   .unavailable-text {
@@ -149,14 +144,17 @@
     background-color: #fff;
     width: 100%;
     padding: 10px 15px 10px 40px;
-    border-radius: 8px;
     border: 1px solid #73A965;
+    border-radius: 24px;
+    font-family: secondary-regular;
     font-size: 16px;
     color: #000000;
+    transition: border-color 0.3s ease;
   }
   
   .search-input::placeholder {
     color: rgba(0, 0, 0, 0.5);
+    font-family: secondary-regular;
   }
 
   .search-input:focus {
@@ -174,10 +172,6 @@
     pointer-events: none; 
   }
   
-  .search-input::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  
   /* filters */
 
   .filters {
@@ -192,6 +186,7 @@
   
   .filter-group h4 {
     margin-bottom: 8px;
+    font-family: primary-semibold;
   }
   
   .checkbox-box {
@@ -247,6 +242,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 16px;
+    font-family: secondary-regular;
     width: 90%;
   }
 
@@ -258,48 +254,38 @@
   }
 
   .load-more-button {
-    background-color: #73A965;
-    color: #262626;
-    border: none;
-    border-radius: 24px;
-    padding: 12px 24px;
-    font-family: secondary-semibold;
-    font-size: 18px;
+    background-color: transparent;
+    border: 2px solid #73A965;
+    color: #73A965;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-family: secondary-medium;
+    transition: all 0.2s ease;
   }
 
   .load-more-button:hover {
-    background-color: #4BBFA0;
+    background-color: #73A965;
+    color: white;
   }
 
   .load-more-button:disabled {
-    background-color: #ccc;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 
   .filter-item {
-    border: #73A965 solid 1px;
-    border-radius: 24px;
     padding: 8px 16px;
-    font-family: secondary-regular;
-    font-size: 16px;
+    margin: 4px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-family: secondary-regular;
+    transition: all 0.2s ease;
   }
 
   .filter-item.active {
-    color: #73A965;
-  }
-
-  .search-input {
-    border: 1px solid #73A965;
-    border-radius: 24px;
-    padding: 12px 20px;
-    font-family: secondary-regular;
-    font-size: 16px;
-    width: 100%;
-    transition: border-color 0.3s ease;
+    background-color: #73A965;
+    color: white;
   }
 
   .search-button {
@@ -311,25 +297,23 @@
   }
 
   .card-button-secondary {
-    border: 1.5px solid #73A965;
-    color: #262626;
-    background: none;
-    padding: 8px 16px;
-    border-radius: 24px;
-    font-family: secondary-regular;
-    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid #73A965;
+    color: #73A965;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-family: secondary-medium;
+    transition: all 0.2s ease;
   }
 
   .card-button-cta {
     background-color: #73A965;
-    border-color: #73A965;
-    color: #262626;
-    padding: 8px 16px;
-    border-radius: 24px;
-    font-family: secondary-semibold;
-    font-size: 16px;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-family: secondary-medium;
+    transition: all 0.2s ease;
   }

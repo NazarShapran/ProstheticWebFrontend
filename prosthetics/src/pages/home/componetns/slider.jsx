@@ -52,7 +52,7 @@ export default function SliderEmblaSimple() {
                 <p className="card-text">{p.description}</p>
                 <div className="card-actions">
                   <button 
-                    className="card-button-cta"
+                    className="home-card-button-cta"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleRequestClick(p.id);

@@ -9,7 +9,7 @@ import "./FormStyles.css";
 export default function FormPage() {
   const location = useLocation();
   const selectedProstheticId = location.state?.selectedProstheticId || "";
-  
+
   const [prosthesis, setProsthesis] = useState(selectedProstheticId);
   const [description, setDescription] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -20,7 +20,7 @@ export default function FormPage() {
     prosthetics,
     loading: prostheticsLoading,
     error: prostheticsError,
-  } = useGetAllProsthetics(true); 
+  } = useGetAllProsthetics(true);
   const {
     createRequest,
     loading: requestLoading,
@@ -63,83 +63,99 @@ export default function FormPage() {
   };
 
   return (
-    <div className="form-page-form-page">
+    <div className="form-page">
       <div className="form-page-form-container">
-        <h1>Оформлення заявки</h1>
-        <p className="form-page-subheading">
-          Перевірте ваші дані та змініть її при потребі в кабінеті користувача
-        </p>
-        <form onSubmit={handleSubmit}>
-          <div className="form-page-display-info">
-            <p>
-              <strong>ПІБ:</strong> {fullName}
-            </p>
-            <p>
-              <strong>Телефон:</strong> {phoneNumber}
-            </p>
-            <p>
-              <strong>Email:</strong> {email}
-            </p>
-            <p>
-              <strong>Дата народження:</strong> {birthDate}
-            </p>
+        <div className="form-images-gallery">
+          <div className="form-image-container">
+            <img src="/images/form1.png" alt="Prosthetic user hiking" />
           </div>
-
-          <h4>Оберіть потрібний протез</h4>
-          <div className="form-page-input-wrapper">
-            {prostheticsLoading ? (
-              <p>Завантаження протезів...</p>
-            ) : prostheticsError ? (
-              <p>Помилка при завантаженні протезів</p>
-            ) : (
-              <select
-                value={prosthesis}
-                onChange={(e) => setProsthesis(e.target.value)}
-                required
-              >
-                <option value="">Оберіть протез</option>
-                {prosthetics.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.title}
-                  </option>
-                ))}
-              </select>
-            )}
+          <div className="form-image-container">
+            <img src="/images/form2.png" alt="Prosthetic hand demonstration" />
           </div>
-
-          <hr className="form-page-divider" />
-          <h4>Опис вашої ситуації</h4>
+          <div className="form-image-container">
+            <img src="/images/form3.png" alt="Prosthetic leg with shoe" />
+          </div>
+          <div className="form-image-container">
+            <img src="/images/form4.png" alt="Person running with prosthetic" />
+          </div>
+        </div>
+        <div className="form-page-content">
+          <h1 className="form-page-heading">Оформлення заявки</h1>
           <p className="form-page-subheading">
-            Коротко опишіть свою ситуацію. Це необхідно для того, щоб простіше
-            було виявити шахраїв.
+            Перевірте ваші дані та змініть її при потребі в кабінеті користувача
           </p>
-          <div className="form-page-input-wrapper">
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Опишіть свою ситуацію"
-              required
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-page-display-info">
+              <p>
+                <strong>ПІБ:</strong> {fullName}
+              </p>
+              <p>
+                <strong>Телефон:</strong> {phoneNumber}
+              </p>
+              <p>
+                <strong>Email:</strong> {email}
+              </p>
+              <p>
+                <strong>Дата народження:</strong> {birthDate}
+              </p>
+            </div>
 
-          <div className="form-page-button-group">
-            <button
-              className="form-page-button"
-              type="submit"
-              disabled={requestLoading}
-            >
-              {requestLoading ? "Відправка..." : "Залишити заявку"}
-            </button>
-          </div>
+            <h3>Оберіть потрібний протез</h3>
+            <div className="form-page-input-wrapper">
+              {prostheticsLoading ? (
+                <p>Завантаження протезів...</p>
+              ) : prostheticsError ? (
+                <p>Помилка при завантаженні протезів</p>
+              ) : (
+                <select
+                  value={prosthesis}
+                  onChange={(e) => setProsthesis(e.target.value)}
+                  required
+                >
+                  <option value="">Оберіть протез</option>
+                  {prosthetics.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.title}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </div>
 
-          {requestError && (
-            <p className="form-page-error">Помилка: {requestError}</p>
-          )}
+            <hr className="form-page-divider" />
+            <h2>Опис вашої ситуації</h2>
+            <p className="form-page-subheading">
+              Коротко опишіть свою ситуацію. Це необхідно для того, щоб простіше
+              було виявити шахраїв.
+            </p>
+            <div className="form-page-input-wrapper">
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Опишіть свою ситуацію"
+                required
+              />
+            </div>
 
-          {successMessage && (
-            <p className="form-page-success">{successMessage}</p>
-          )}
-        </form>
+            <div className="form-page-button-group">
+              <button
+                className="form-page-button"
+                type="submit"
+                disabled={requestLoading}
+              >
+                {requestLoading ? "Відправка..." : "Залишити заявку"}
+              </button>
+            </div>
+
+            {requestError && (
+              <p className="form-page-error">Помилка: {requestError}</p>
+            )}
+
+            {successMessage && (
+              <p className="form-page-success">{successMessage}</p>
+            )}
+          </form>
+        </div>
       </div>
     </div>
   );

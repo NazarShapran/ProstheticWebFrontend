@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { userUserFromLocalStorage } from "../hooks/userUserFromLocalStorage";
 import { useLogout } from "../hooks/useLogout";
 import { useUpdateUserDetails } from "../hooks/useUpdateUserDetails";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import MarkunreadIcon from '@mui/icons-material/Markunread';
+import { CircularProgress } from "@mui/material";
+import Person from "../../../assets/person-green.svg?react";
+import Phone from "../../../assets/phone.svg?react";
+import Date from "../../../assets/date.svg?react";
+import Email from "../../../assets/email.svg?react";
+import Edit from "../../../assets/edit.svg?react";
+import Exit from "../../../assets/exit.svg?react";
+import Cancel from "../../../assets/cancel.svg?react";
+import Confirm from "../../../assets/confirm.svg?react";
 
 const PersonalInfo = () => {
   const user = userUserFromLocalStorage();
@@ -19,7 +24,7 @@ const PersonalInfo = () => {
     handleChange,
     updateUserDetails,
     resetForm,
-    setShowAlert
+    setShowAlert,
   } = useUpdateUserDetails();
 
   const handleSubmit = async () => {
@@ -34,24 +39,61 @@ const PersonalInfo = () => {
     setIsEditing(false);
   };
 
-  const inputStyle = !isEditing ? {
-    pointerEvents: 'none',
-    backgroundColor: '#f5f5f5',
-    color: '#666'
-  } : {};
+  const inputStyle = !isEditing
+    ? {
+        pointerEvents: "none",
+        backgroundColor: "#f5f5f5",
+        color: "#666",
+      }
+    : {};
 
   return (
     <div className="profile-section">
-      <h3>Особиста інформація</h3>
-      {showAlert && <div className={`alert ${alertMessage.includes('успішно') ? 'success' : 'error'}`}>
-        {alertMessage}
-      </div>}
+      {loading && (
+        <div className="loading-overlay">
+          <CircularProgress style={{ color: '#73A965' }} />
+        </div>
+      )}
+      <div className="profile-section-header">
+        <h3>Особиста інформація</h3>
+        {showAlert && (
+          <div
+            className={`alert ${
+              alertMessage.includes("успішно") ? "success" : "error"
+            }`}
+          >
+            {alertMessage}
+          </div>
+        )}
+        <div className="profile-section-button-group">
+          {!isEditing ? (
+            <>
+              <Edit className="edit-btn" onClick={() => setIsEditing(true)} />
+              <Exit className="logout-btn" onClick={logout} />
+            </>
+          ) : (
+            <>
+              <Confirm 
+                className="confirm-btn" 
+                onClick={handleSubmit}
+                style={{ cursor: loading ? 'not-allowed' : 'pointer' }}
+              />
+              <Cancel 
+                className="cancel-btn" 
+                onClick={handleCancel}
+                style={{ cursor: loading ? 'not-allowed' : 'pointer' }}
+              />
+            </>
+          )}
+        </div>
+      </div>
+
       <div className="profile-section-content">
         <div className="column">
           <div className="input-wrapper">
             <label>ПІБ:</label>
             <div className="input-with-icon">
-              <PersonOutlineIcon className="input-icon" />
+              <Person className="input-icon" />
               <input
                 type="text"
                 name="fullName"
@@ -65,7 +107,7 @@ const PersonalInfo = () => {
           <div className="input-wrapper">
             <label>Телефон:</label>
             <div className="input-with-icon">
-              <LocalPhoneIcon className="input-icon" />
+              <Phone className="input-icon" />
               <input
                 type="text"
                 name="phoneNumber"
@@ -81,7 +123,7 @@ const PersonalInfo = () => {
           <div className="input-wrapper">
             <label>Дата народження:</label>
             <div className="input-with-icon">
-              <CalendarMonthIcon className="input-icon" />
+              <Date className="input-icon" />
               <input
                 type="text"
                 name="birthDate"
@@ -96,7 +138,7 @@ const PersonalInfo = () => {
           <div className="input-wrapper">
             <label>Пошта:</label>
             <div className="input-with-icon">
-              <MarkunreadIcon className="input-icon" />
+              <Email className="input-icon" />
               <input
                 type="email"
                 name="email"
@@ -108,35 +150,6 @@ const PersonalInfo = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="button-group">
-        {!isEditing ? (
-          <>
-            <button className="edit-btn" onClick={() => setIsEditing(true)}>
-              Змінити
-            </button>
-            <button className="logout-btn" onClick={logout}>
-              Вийти
-            </button>
-          </>
-        ) : (
-          <>
-            <button 
-              className="save-btn" 
-              onClick={handleSubmit}
-              disabled={loading}
-            >
-              {loading ? "Збереження..." : "Зберегти"}
-            </button>
-            <button 
-              className="cancel-btn" 
-              onClick={handleCancel}
-              disabled={loading}
-            >
-              Скасувати
-            </button>
-          </>
-        )}
       </div>
     </div>
   );

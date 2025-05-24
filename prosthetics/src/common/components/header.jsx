@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../common/svgs/logo.svg?react";
-import { PersonOutline } from "@mui/icons-material";
+import Person from "../../assets/person-white.svg?react";
 import CustomLink from "./CustomLink";
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
           id="btnSignIn"
           onClick={handleCabinetClick}
         >
-          <PersonOutline className="header-cabinet-icon" sx={{ fontSize: 24 }} />
+          <Person className="header-cabinet-icon" />
           Кабінет
         </button>
       </div>

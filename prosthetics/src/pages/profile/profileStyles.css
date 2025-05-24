@@ -62,22 +62,46 @@
 
 /* Секції */
 .profile-section {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 800px;
+  position: relative;
+  background-color: #73a96510;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  width: 1000px;
 }
 
 /* Заголовки секцій */
 .profile-section h3 {
   margin-top: 0;
-  margin-bottom: 10px;
   font-size: 24px;
   font-family: secondary-medium;
+}
+
+.profile-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.profile-section-button-group {
+  display: flex;
+  gap: 12px;
+}
+
+.profile-section-button-group svg {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-section-button-group svg:hover {
+  transform: scale(1.1);
+}
+
+
+/* Disable hover effect when loading */
+.profile-section-button-group svg[style*="not-allowed"]:hover {
+  transform: none;
 }
 
 .profile-section p {
@@ -97,16 +121,17 @@
 }
 
 .input-wrapper {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
 }
 
 .input-wrapper label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-family: secondary-regular;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.8);
+  margin-left: 8px;
 }
 
 .input-wrapper input[type="checkbox"] {
@@ -122,8 +147,8 @@
 .input-with-icon input {
   width: 100%;
   padding: 8px 8px 8px 40px;
-  border: 1px solid #73A965;
-  border-radius: 6px;
+  border: 1px solid rgba(115, 169, 101, 0.2);
+  border-radius: 24px;
   background-color: #fff;
   font-family: secondary-regular;
   font-size: 16px;
@@ -269,4 +294,31 @@ button.delete-btn:disabled {
   font-family: secondary-regular;
   width: 100%;
   transition: border-color 0.3s ease;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  z-index: 1000;
+}
+
+.profile-section-header-change-password {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.change-password-title {
+  font-family: secondary-regular;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.);
 }

@@ -125,8 +125,26 @@
   color: #FF6B6B;
 }
 
+.reviews-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px;
+  text-align: center;
+}
+
+.no-reviews-illustration {
+  width: 400px;
+  height: 400px;
+  color: #73A965;
+}
+
 .reviews-empty p {
-  font-size: 16px;
+  font-family: secondary-medium;
+  font-size: 20px;
+  color: #666;
   margin: 0;
 }
 

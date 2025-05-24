@@ -1,5 +1,6 @@
 /* Main layout container */
 .layout-container {
+  padding-top: 124px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -16,8 +17,12 @@
 
 /* Header container */
 .header-container {
-  margin-top: 16px;
-  margin-bottom: 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px;
   width: 100%;
 }
 
@@ -34,6 +39,8 @@
   height: 76px;
   max-width: 1376px;
   margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }
 
 /* Navigation styling */

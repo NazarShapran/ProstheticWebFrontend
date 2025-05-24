@@ -26,7 +26,6 @@
 
 .about-container h1 {
   font-size: 48px;
-  font-family: primary;
   color: #73A965;
 }
 
@@ -95,7 +94,6 @@
   .how-it-works-container h1 {
     font-size: 48px;
     color: #73A965;
-    font-family: primary; 
   }
   
   .how-it-works-grid {
@@ -162,12 +160,11 @@
     margin-bottom: 80px;
   }
   
-  .faq-container h2 {
+  .faq-container h1 {
     font-size: 48px;
     text-align: start;
     color: #73A965;
     margin-bottom: 40px;
-    font-family: primary;
   }
   
   .faq-list {

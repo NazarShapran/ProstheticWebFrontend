@@ -3,10 +3,10 @@ import {
   Instagram,
   Facebook,
   Twitter,
-  Email,
-  Phone,
   Telegram,
 } from "@mui/icons-material";
+import Phone from "../../assets/phone.svg?react";
+import Email from "../../assets/email.svg?react";
 import CustomLink from "./CustomLink";
 
 const Footer = () => {

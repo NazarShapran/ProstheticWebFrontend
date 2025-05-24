@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Empty from "../../../assets/Empty.svg?react";
 
 const ProductCard = ({ filteredProsthetics }) => {
   const navigate = useNavigate();
  
   if (!filteredProsthetics || filteredProsthetics.length === 0) {
-    return <p>Протези не знайдено</p>;
+    return (
+      <div className="empty-state">
+        <Empty className="empty-illustration" />
+        <p className="empty-text">Протези не знайдено</p>
+      </div>
+    );
   }
 
   const handleCardClick = (prostheticId) => {

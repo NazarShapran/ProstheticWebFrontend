@@ -26,8 +26,10 @@ const ChangePassword = () => {
 
   return (
     <div className="profile-section change-password">
-      <h3>Налаштування кабінету</h3>
-      <h4>Зміна пароля</h4>
+      <div className="profile-section-header-change-password">
+        <h3>Налаштування кабінету</h3>
+        <h4 className="change-password-title">Зміна пароля</h4>
+      </div>
       {error?.general && <div className="error-message">{error.general}</div>}
       <form onSubmit={handleSubmit}>
         <div className="profile-section-content">

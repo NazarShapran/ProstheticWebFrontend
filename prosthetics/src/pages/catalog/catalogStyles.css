@@ -35,6 +35,8 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     flex: 1;
+    min-height: 600px;
+    position: relative;
   }
   
   @media (min-width: 1200px) {
@@ -46,7 +48,7 @@
   
   .product-card {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 24px;
     border: #73A965 solid 1px;
     padding: 15px;
     text-align: center;
@@ -243,7 +245,7 @@
     justify-content: space-between;
     font-size: 16px;
     font-family: secondary-regular;
-    width: 90%;
+    width: 100%;
   }
 
   .load-more-container {
@@ -258,7 +260,7 @@
     border: 2px solid #73A965;
     color: #73A965;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 24px;
     cursor: pointer;
     font-family: secondary-medium;
     transition: all 0.2s ease;
@@ -316,4 +318,31 @@
     cursor: pointer;
     font-family: secondary-medium;
     transition: all 0.2s ease;
+  }
+
+  .empty-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .empty-illustration {
+    width: 500px;
+    height: 500px;
+    color: #73A965;
+  }
+
+  .empty-text {
+    font-family: secondary-medium;
+    font-size: 24px;
+    color: #666;
+    margin: 0;
+    text-align: center;
   }

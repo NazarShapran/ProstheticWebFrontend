@@ -2,6 +2,7 @@ import React from 'react';
 import { useGetAllReviewsByProstheticId } from '../hooks/useGetAllReviewsByProstheticId';
 import ReviewCard from './ReviewCard';
 import ReviewForm from './reviewForm';
+import NoData from '../../../assets/No data-cuate.svg?react';
 import "../styles/Reviews.css";
 
 const Reviews = ({ prostheticId, userId }) => {
@@ -36,6 +37,7 @@ const Reviews = ({ prostheticId, userId }) => {
 
       {(!reviews || reviews.length === 0) ? (
         <div className="reviews-empty">
+          <NoData className="no-reviews-illustration" />
           <p>Поки що немає відгуків про цей протез</p>
         </div>
       ) : (

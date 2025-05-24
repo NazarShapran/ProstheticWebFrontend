@@ -26,8 +26,12 @@ export default function SliderEmblaSimple() {
   };
 
   if (loading) return <p>Завантаження...</p>;
-  // if (error) return <p>Сталася помилка при завантаженні протезів</p>;
-  if (!limitedProsthetics.length) return <p>Немає доступних протезів</p>;
+  if (!limitedProsthetics.length) return (
+    <div className="empty-state">
+      <Empty className="empty-illustration" />
+      <p className="empty-text">Немає доступних протезів</p>
+    </div>
+  );;
 
   return (
     <section className="embla">
@@ -45,30 +49,32 @@ export default function SliderEmblaSimple() {
                   src={p.imageUrl || "/images/slider2.png"}
                   alt={p.title}
                 />
-                <div className="card-title">
-                  <h3 className="card-heading">{p.title}</h3>
-                  <p className="prosthetic-type">{p.type.title}</p>
-                </div>
-                <p className="card-text">{p.description}</p>
-                <div className="card-actions">
-                  <button 
-                    className="home-card-button-cta"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleRequestClick(p.id);
-                    }}
-                  >
-                    Залишити заявку
-                  </button>
-                  <button 
-                    className="home-card-button-secondary"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDetailsClick(p.id);
-                    }}
-                  >
-                    Переглянути
-                  </button>
+                <div className="card-content">
+                  <div className="card-title">
+                    <h3 className="card-heading">{p.title}</h3>
+                    <p className="prosthetic-type">{p.type.title}</p>
+                  </div>
+                  <p className="card-text">{p.description}</p>
+                  <div className="card-actions">
+                    <button 
+                      className="home-card-button-cta"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRequestClick(p.id);
+                      }}
+                    >
+                      Залишити заявку
+                    </button>
+                    <button 
+                      className="home-card-button-secondary"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDetailsClick(p.id);
+                      }}
+                    >
+                      Переглянути
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -7,6 +7,7 @@
   text-align: left;
   overflow: hidden;
   height: auto;
+  margin-bottom: 100px;
 }
 
 /* Hero section container */
@@ -137,7 +138,6 @@
   flex-direction: column;
   padding: 20px;
   color: white;
-  box-shadow: 0 4px 12px 0 #73A965;
 }
 
 .card-image {
@@ -146,6 +146,13 @@
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 16px;
+  z-index: 3;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   z-index: 3;
 }
 
@@ -159,14 +166,13 @@
   font-family: secondary-semibold;
   font-size: 24px;
   color: #73A965;
-  margin: 0 0 4px 0;
   z-index: 3;
 }
 
 .prosthetic-type {
   font-family: secondary-regular;
   font-size: 16px;
-  color: #ffffff;
+  color: #ffffffde;
   margin: 0;
   z-index: 3;
 }
@@ -182,6 +188,7 @@
   display: -webkit-box;
   line-clamp: 3;
   -webkit-box-orient: vertical;
+  flex: 1;
 }
 
 .card-actions {
@@ -189,6 +196,7 @@
   gap: 12px;
   justify-content: flex-start;
   z-index: 3;
+  margin-top: auto;
 }
 
 .home-card-button-cta {
@@ -355,8 +363,14 @@
   transition: 0.3s ease;
 }
 
-.read-more:hover {
+.read-more:hover:not(:disabled) {
   transform: translateY(-2px);
   background-color: transparent;
+}
+
+.read-more:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #ccc !important;
 }
 

@@ -53,64 +53,81 @@
     color: rgba(255, 255, 255, 0.7);
   }
   
-  .sign-in-form button {
-    padding: 12px;
-    background-color: #73A965;
-    border: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-family: secondary-semibold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .sign-in-form button:hover {
-    background-color: #3fc1a0;
-  }
-  
   .sign-in-note {
     margin-top: -16px;
-    font-size: 14px;
-    color: #ffffffb4;
+    font-size: 16px;
+    color: #ffffffd8;
     font-family: secondary-regular;
   }
   
   .sign-in-note a {
+    transition: color 0.3s ease;
+    color: #fff;
+  }
+  .sign-in-note a:hover {
     color: #73A965;
-    text-decoration: underline;
-    cursor: pointer;
   }
   
   .input-group {
     display: flex;
     flex-direction: column;
     gap: 24px;
+
   }
 
-  .input {
+  .input-sign-in {
     position: relative;
     display: flex;
     align-items: center;
+    border-radius: 24px;
   }
   
-  .input input {
-    padding: 12px 12px 12px 42px;
-    border-radius: 8px;
-    border: 1px solid #73A965;
+  .input-sign-in input {
+    padding: 16px 16px 16px 42px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
+    font-size: 16px;
     width: 100%;
   }
+
+  .input-sign-in input:focus {
+    outline: none;
+    border-color: #73A965;
+  }
   
-  .input-icon {
+  .input-icon-sign-in {
     position: absolute;
     left: 12px;
     color: #ffffff;
     pointer-events: none;
   }
 
-  .error-message {
+  .password-toggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .password-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .password-toggle:hover  {
+    background-color: transparent;
+  }
+
+.error-message {
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -127,33 +144,37 @@
   color: yellow;
 }
 
-.sign-in-button {
+.sign-in-confirm-button {
   background-color: #73A965;
   color: #262626;
   border: none;
   border-radius: 50px;
-  padding: 20px 40px;
+  padding: 16px 24px;
   font-size: 20px;
   font-family: secondary-medium;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 2px solid #73A965;
 }
 
-.sign-in-link {
-  color: #73A965;
-  text-decoration: none;
-  font-family: secondary-medium;
-  transition: color 0.3s ease;
+.sign-in-confirm-button:hover {
+  background-color: transparent;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
-.sign-in-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #73A965;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: secondary-regular;
-  transition: border-color 0.3s ease;
+.home-button {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.home-button:hover{
+  background-color: transparent;
+}
 

@@ -1,17 +1,22 @@
 import { useState } from "react";
 import {
-  Email,
-  Key,
-  Person,
-  Phone,
-  CalendarToday,
   ArrowCircleDown,
 } from "@mui/icons-material";
 import { useSignUp } from "../signUp/hooks/useSignUp";
+import Phone from "../../../assets/phone-white.svg?react";
+import Email from "../../../assets/email-white.svg?react";
+import Key from "../../../assets/key.svg?react";
+import Person from "../../../assets/person-white.svg?react";
+import Date from "../../../assets/date-white.svg?react";
+import EyeOpen from "../../../assets/eye.svg?react";
+import EyeClosed from "../../../assets/eye-close.svg?react";
+import Home from "../../../assets/home.svg?react";
+import { useNavigate } from "react-router-dom";
 import "./signUpStyles.css";
 
 export default function SignUpPage() {
   const [step, setStep] = useState(1);
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,12 +25,21 @@ export default function SignUpPage() {
     birthDate: "",
   });
   const [formErrors, setFormErrors] = useState({});
+  const navigate = useNavigate();
 
   const { handleRegister, loading, error } = useSignUp();
+
+  const handleHomeClick = () => {
+    navigate('/');
+  };
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     setFormErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const validateStep1 = () => {
@@ -100,6 +114,9 @@ export default function SignUpPage() {
   return (
     <div className="sign-up-page">
       <div className="sign-up-form-container">
+        <button className="home-button" onClick={handleHomeClick}>
+          <Home />
+        </button>
         {(step === 2 || step === 3) && (
           <button
             type="button"
@@ -166,17 +183,24 @@ export default function SignUpPage() {
               <div className="input">
                 <Key className="input-icon" />
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Введіть пароль до кабінету"
                   value={formData.password}
                   onChange={handleChange}
                   required
                 />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <EyeClosed /> : <EyeOpen />}
+                </button>
               </div>
               {formErrors.password && <p className="error-text">{formErrors.password}</p>}
             </div>
-            <button type="submit">Далі</button>
+            <button type="submit" className="sign-up-button">Далі</button>
           </form>
         ) : (
           <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -206,7 +230,7 @@ export default function SignUpPage() {
               </div>
               {formErrors.phone && <p className="error-text">{formErrors.phone}</p>}
               <div className="input">
-                <CalendarToday className="input-icon" />
+                <Date className="input-icon" />
                 <input
                   type="date"
                   name="birthDate"
@@ -218,7 +242,7 @@ export default function SignUpPage() {
               </div>
               {formErrors.birthDate && <p className="error-text">{formErrors.birthDate}</p>}
             </div>
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading} className="sign-up-button">
               {loading ? "Реєстрація..." : "Зареєструватися"}
             </button>
             {error && <p style={{ color: "red" }}>{error}</p>}

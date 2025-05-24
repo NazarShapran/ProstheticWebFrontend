@@ -27,7 +27,7 @@ const SubmittedApplications = () => {
 
   return (
     <div className="profile-section applications">
-      <h3>Подані заявки</h3>
+      <h3 className="profile-section-header">Подані заявки</h3>
       {requests.map((app, index) => (
         <div key={index} className="application-item">
           <div className="application-details">

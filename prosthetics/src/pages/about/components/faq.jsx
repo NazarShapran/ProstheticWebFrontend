@@ -33,7 +33,7 @@ export default function FaqSection() {
 
   return (
     <section className="faq-container">
-      <h2>Часті запитання</h2>
+      <h1>Часті запитання</h1>
       <div className="faq-list">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;

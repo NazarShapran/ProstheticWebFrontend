@@ -322,3 +322,70 @@ button.delete-btn:disabled {
   font-size: 16px;
   color: rgba(0, 0, 0, 0.);
 }
+
+/* Empty state styles */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 80px;
+  width: 1000px;
+}
+
+.empty-illustration {
+  width: 300px;
+  height: 300px;
+}
+
+.empty-state h3 {
+  margin-top: -20px;
+  font-size: 24px;
+  color: #333;
+  font-family: secondary-medium;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.primary-button {
+  background-color: #73A965;
+  color: white;
+  padding: 12px 32px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-family: secondary-medium;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background-color: #5f8c53;
+  transform: translateY(-2px);
+}
+
+/* Loading container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 1000px;
+  height: 200px;
+  background-color: #73a96510;
+  border-radius: 24px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.loading-container p {
+  color: #666;
+  font-family: secondary-regular;
+  font-size: 16px;
+  margin: 0;
+}

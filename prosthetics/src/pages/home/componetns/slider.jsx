@@ -35,6 +35,10 @@ export default function SliderEmblaSimple() {
 
   return (
     <section className="embla">
+      <h2 className="embla-title">Доступні протези</h2>
+      <p className="embla-description">
+        Ці протези можуть бути корисними саме для тебе, <br />просто залиши заявку і ми зв'яжемось з тобою.
+      </p>
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {limitedProsthetics.map((p, index) => (

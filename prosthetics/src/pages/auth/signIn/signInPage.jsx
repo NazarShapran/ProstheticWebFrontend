@@ -7,13 +7,19 @@ import EyeOpen from "../../../assets/eye.svg?react";
 import EyeClosed from "../../../assets/eye-close.svg?react";
 import Home from "../../../assets/home.svg?react";
 import { useNavigate } from "react-router-dom";
+import SnackbarAlert from "../../../common/components/SnackbarAlert";
+import { CircularProgress } from "@mui/material";
 import "./signInStyles.css";
 
 export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [validationError, setValidationError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "error"
+  });
   const navigate = useNavigate();
 
   const { loading, error, handleSubmit } = useSignIn();
@@ -34,29 +40,57 @@ export default function SignInPage() {
     navigate('/');
   };
 
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
+  };
+
+  const showError = (message) => {
+    setSnackbar({
+      open: true,
+      message,
+      severity: "error"
+    });
+  };
+
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setValidationError("Введіть правильний формат електронної пошти.");
+      showError("Введіть правильний формат електронної пошти");
       return false;
     }
     if (password.length < 6) {
-      setValidationError("Пароль має містити мінімум 6 символів.");
+      showError("Пароль має містити мінімум 6 символів");
       return false;
     }
-    setValidationError("");
     return true;
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    handleSubmit(email, password);
+    
+    const result = await handleSubmit(email, password);
+    if (!result.success) {
+      showError(result.error || "Невірний email або пароль");
+    }
   };
 
   return (
     <div className="sign-in-page">
+      <SnackbarAlert
+        open={snackbar.open}
+        onClose={handleCloseSnackbar}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        autoHideDuration={5000}
+      />
+      
       <div className="sign-in-form-container">
+        {loading && (
+          <div className="loading-overlay">
+            <CircularProgress style={{ color: '#73A965' }} />
+          </div>
+        )}
         <button className="home-button" onClick={handleHomeClick}>
           <Home />
         </button>
@@ -72,6 +106,7 @@ export default function SignInPage() {
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="Введіть електронну пошту"
+                disabled={loading}
               />
             </div>
             <div className="input-sign-in">
@@ -83,31 +118,25 @@ export default function SignInPage() {
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Введіть пароль"
+                disabled={loading}
               />
               <button
                 type="button"
                 className="password-toggle"
                 onClick={togglePasswordVisibility}
+                disabled={loading}
               >
                 {showPassword ? <EyeClosed /> : <EyeOpen />}
               </button>
             </div>
           </div>
 
-          {validationError && (
-            <p className="error-message">
-              <WarningIcon className="error-icon" />
-              {validationError}
-            </p>
-          )}
-          {error && (
-            <p className="error-message">
-              <WarningIcon className="error-icon" />
-              {error}
-            </p>
-          )}
-
-          <button className="sign-in-confirm-button" type="submit" disabled={loading}>
+          <button 
+            className="sign-in-confirm-button" 
+            type="submit" 
+            disabled={loading}
+            style={{ cursor: loading ? 'not-allowed' : 'pointer' }}
+          >
             {loading ? "Завантаження..." : "Ввійти"}
           </button>
         </form>

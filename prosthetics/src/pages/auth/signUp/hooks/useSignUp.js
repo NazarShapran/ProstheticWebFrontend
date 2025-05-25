@@ -5,7 +5,7 @@ export const useSignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleRegister = async (fullname, phoneNumber, birthDate, email, password) => {
+  const handleRegister = async (fullname, phoneNumber, email, password, birthDate) => {
     setError(null);
     setLoading(true);
 
@@ -16,16 +16,22 @@ export const useSignUp = () => {
       const response = await SignUpService.signUp(
         fullname,
         phoneNumber,
-        birthDate,
         email,
         password,
+        birthDate,
         signal
       );
       console.log("Registration successful:", response);
       window.location.href = "/signin";
+      return { success: true };
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.message || "Registration failed. Please try again.");
+      const errorMessage = err.response?.data?.message || "Помилка реєстрації. Спробуйте ще раз.";
+      setError(errorMessage);
+      return { 
+        success: false, 
+        error: errorMessage 
+      };
     } finally {
       setLoading(false);
     }

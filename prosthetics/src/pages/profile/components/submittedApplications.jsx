@@ -2,8 +2,10 @@ import React from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { CircularProgress } from "@mui/material";
 import { useGetRequestsByUserId } from "../hooks/useGetRequestsByUserId";
 import { userUserFromLocalStorage } from "../../profile/hooks/userUserFromLocalStorage";
+import EmptyBro from "../../../assets/Empty-bro.svg?react";
 
 const SubmittedApplications = () => {
   const user = userUserFromLocalStorage();
@@ -22,8 +24,30 @@ const SubmittedApplications = () => {
     }
   };
 
-  if (loading) return <p>Завантаження заявок...</p>;
-  if (requests.length === 0) return <p>У вас ще немає заявок</p>;
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <CircularProgress style={{ color: '#73A965' }} />
+        <p>Завантаження заявок...</p>
+      </div>
+    );
+  }
+
+  if (requests.length === 0) {
+    return (
+      <div className="empty-state">
+        <EmptyBro className="empty-illustration" />
+        <h3>У вас ще немає заявок</h3>
+        <p className="empty-text">
+          Не гайте часу! Подайте заявку на протез прямо зараз і зробіть перший крок до покращення якості вашого життя. 
+          Наша команда готова допомогти вам у цьому важливому рішенні.
+        </p>
+        <button className="primary-button" onClick={() => window.location.href = '/form'}>
+          Подати заявку
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="profile-section applications">

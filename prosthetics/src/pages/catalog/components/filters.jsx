@@ -28,7 +28,7 @@ const Filters = ({ onFilterChange }) => {
     ],
     amputationLevel: [
       { value: "Кистьовий", label: "Кистьовий" },
-      { value: "Передпліччя", label: "Передпліччя" },
+      { value: "Передплічний", label: "Передплічний" },
       { value: "Плечовий", label: "Плечовий" },
       { value: "Стопа", label: "Стопа" },
       { value: "Гомілковий", label: "Гомілковий" },

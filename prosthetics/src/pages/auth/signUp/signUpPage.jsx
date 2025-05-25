@@ -12,6 +12,8 @@ import EyeOpen from "../../../assets/eye.svg?react";
 import EyeClosed from "../../../assets/eye-close.svg?react";
 import Home from "../../../assets/home.svg?react";
 import { useNavigate } from "react-router-dom";
+import SnackbarAlert from "../../../common/components/SnackbarAlert";
+import { CircularProgress } from "@mui/material";
 import "./signUpStyles.css";
 
 export default function SignUpPage() {
@@ -24,7 +26,11 @@ export default function SignUpPage() {
     phone: "",
     birthDate: "",
   });
-  const [formErrors, setFormErrors] = useState({});
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "error"
+  });
   const navigate = useNavigate();
 
   const { handleRegister, loading, error } = useSignUp();
@@ -35,58 +41,84 @@ export default function SignUpPage() {
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setFormErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
+  };
+
+  const showError = (message) => {
+    setSnackbar({
+      open: true,
+      message,
+      severity: "error"
+    });
+  };
+
   const validateStep1 = () => {
-    const errors = {};
-    if (!formData.password) {
-      errors.password = "Введіть пароль";
-    } else {
-      if (formData.password.length < 6) {
-        errors.password = "Пароль має бути не менше 6 символів";
-      }
-      if (!/[A-Z]/.test(formData.password)) {
-        errors.password = "Пароль має містити хоча б одну велику літеру";
-      }
-      if (!/[a-z]/.test(formData.password)) {
-        errors.password = "Пароль має містити хоча б одну малу літеру";
-      }
-      if (!/[0-9]/.test(formData.password)) {
-        errors.password = "Пароль має містити хоча б одну цифру";
-      }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email) {
+      showError("Введіть електронну пошту");
+      return false;
     }
-    return errors;
+    if (!emailRegex.test(formData.email)) {
+      showError("Введіть правильний формат електронної пошти");
+      return false;
+    }
+    if (!formData.password) {
+      showError("Введіть пароль");
+      return false;
+    }
+    if (formData.password.length < 6) {
+      showError("Пароль має бути не менше 6 символів");
+      return false;
+    }
+    if (!/[A-Z]/.test(formData.password)) {
+      showError("Пароль має містити хоча б одну велику літеру");
+      return false;
+    }
+    if (!/[a-z]/.test(formData.password)) {
+      showError("Пароль має містити хоча б одну малу літеру");
+      return false;
+    }
+    if (!/[0-9]/.test(formData.password)) {
+      showError("Пароль має містити хоча б одну цифру");
+      return false;
+    }
+    return true;
   };
 
   const validateStep2 = () => {
-    const errors = {};
     if (!formData.name) {
-      errors.name = "Введіть ПІБ";
-    } else if (formData.name.length < 3 || formData.name.length > 255) {
-      errors.name = "ПІБ має бути від 3 до 255 символів";
+      showError("Введіть ПІБ");
+      return false;
+    }
+    if (formData.name.length < 3 || formData.name.length > 255) {
+      showError("ПІБ має бути від 3 до 255 символів");
+      return false;
     }
     if (!formData.phone) {
-      errors.phone = "Введіть номер телефону";
-    } else if (!/^\+?[0-9]{10,15}$/.test(formData.phone)) {
-      errors.phone = "Телефон має містити 10–15 цифр і може починатись з '+'";
+      showError("Введіть номер телефону");
+      return false;
+    }
+    if (!/^\+?[0-9]{10,15}$/.test(formData.phone)) {
+      showError("Телефон має містити 10–15 цифр і може починатись з '+'");
+      return false;
     }
     if (!formData.birthDate) {
-      errors.birthDate = "Введіть дату народження";
+      showError("Введіть дату народження");
+      return false;
     }
-    return errors;
+    return true;
   };
 
   const handleNext = (e) => {
     e.preventDefault();
-    const errors = validateStep1();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-    } else {
+    if (validateStep1()) {
       setStep(2);
     }
   };
@@ -97,23 +129,37 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = validateStep2();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-    } else {
-      await handleRegister(
+    if (validateStep2()) {
+      const result = await handleRegister(
         formData.name,
         formData.phone,
         formData.email,
         formData.password,
         formData.birthDate
       );
+      
+      if (!result.success) {
+        showError(result.error || "Помилка при реєстрації");
+      }
     }
   };
 
   return (
     <div className="sign-up-page">
+      <SnackbarAlert
+        open={snackbar.open}
+        onClose={handleCloseSnackbar}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        autoHideDuration={5000}
+      />
+
       <div className="sign-up-form-container">
+        {loading && (
+          <div className="loading-overlay">
+            <CircularProgress style={{ color: '#73A965' }} />
+          </div>
+        )}
         <button className="home-button" onClick={handleHomeClick}>
           <Home />
         </button>
@@ -122,6 +168,7 @@ export default function SignUpPage() {
             type="button"
             onClick={handleBack}
             className="back-icon-button"
+            disabled={loading}
           >
             <ArrowCircleDown className="rotated-icon" />
           </button>
@@ -177,9 +224,9 @@ export default function SignUpPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
               </div>
-              {formErrors.email && <p className="error-text">{formErrors.email}</p>}
               <div className="input">
                 <Key className="input-icon" />
                 <input
@@ -189,18 +236,25 @@ export default function SignUpPage() {
                   value={formData.password}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
                 <button
                   type="button"
                   className="password-toggle"
                   onClick={togglePasswordVisibility}
+                  disabled={loading}
                 >
                   {showPassword ? <EyeClosed /> : <EyeOpen />}
                 </button>
               </div>
-              {formErrors.password && <p className="error-text">{formErrors.password}</p>}
             </div>
-            <button type="submit" className="sign-up-button">Далі</button>
+            <button 
+              type="submit" 
+              className="sign-up-button"
+              disabled={loading}
+            >
+              Далі
+            </button>
           </form>
         ) : (
           <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -214,9 +268,9 @@ export default function SignUpPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
               </div>
-              {formErrors.name && <p className="error-text">{formErrors.name}</p>}
               <div className="input">
                 <Phone className="input-icon" />
                 <input
@@ -226,9 +280,9 @@ export default function SignUpPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
               </div>
-              {formErrors.phone && <p className="error-text">{formErrors.phone}</p>}
               <div className="input">
                 <Date className="input-icon" />
                 <input
@@ -238,18 +292,21 @@ export default function SignUpPage() {
                   value={formData.birthDate}
                   onChange={handleChange}
                   required
+                  disabled={loading}
                 />
               </div>
-              {formErrors.birthDate && <p className="error-text">{formErrors.birthDate}</p>}
             </div>
-            <button type="submit" disabled={loading} className="sign-up-button">
+            <button 
+              type="submit" 
+              className="sign-up-button"
+              disabled={loading}
+            >
               {loading ? "Реєстрація..." : "Зареєструватися"}
             </button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
           </form>
         )}
         <p className="sign-up-note">
-          Вже маєте кабінет? <a href="/signIn">Увійти зараз</a>
+          Вже зареєстровані? <a href="/signIn">Увійдіть</a>
         </p>
       </div>
     </div>

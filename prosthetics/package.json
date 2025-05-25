@@ -17,10 +17,12 @@
     "axios": "^1.9.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "google-map-react": "^2.2.5",
     "jwt-decode": "^4.0.0",
     "motion": "^12.12.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0-rc.2",
     "react-router": "^7.5.0",
     "react-router-dom": "^7.5.0",
     "react-select": "^5.10.1"

@@ -14,7 +14,7 @@
     background: linear-gradient(to bottom right, rgba(46, 107, 90, 0.2) 0%, rgba(106, 147, 176, 0.2) 50%, rgba(167, 139, 186, 0.2) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 40px;
     max-width: 400px;
     width: 100%;
@@ -25,6 +25,7 @@
     align-items: center;
     border: hsla(0, 0%, 100%, 0.5) 1px solid;
     gap: 20px;
+    position: relative;
   }
   
   .sign-in-form-container h1 {
@@ -176,5 +177,20 @@
 }
 .home-button:hover{
   background-color: transparent;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 24px;
+  transition: all 0.3s ease;
 }
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SignInService } from "../service/signInService";
 import { jwtDecode } from "jwt-decode";
 
@@ -19,20 +19,19 @@ export const useSignIn = () => {
       localStorage.setItem("token", response);
       localStorage.setItem("user", JSON.stringify(decoded));
       window.location.href = "/";
+      return { success: true };
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.message || "Неправильна електронна пошта або пароль.");
+      const errorMessage = err.response?.data?.message || "Неправильна електронна пошта або пароль";
+      setError(errorMessage);
+      return { 
+        success: false, 
+        error: errorMessage 
+      };
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (error) {
-      const timer = setTimeout(() => setError(null), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [error]);
 
   return {
     loading,

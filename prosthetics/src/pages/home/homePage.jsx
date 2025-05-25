@@ -5,15 +5,18 @@ import StoryCard from "./componetns/cards";
 import "./homeStyles.css";
 import Partners from "./componetns/partners";
 import Reviews from './componetns/reviews';
+import Location from './componetns/location';
 
 export default function HomePage() {
   const partnersRef = React.useRef(null);
   const sliderRef = React.useRef(null);
   const reviewsRef = React.useRef(null);
+  const locationRef = React.useRef(null);
 
   const isPartnersInView = useInView(partnersRef, { once: true });
   const isSliderInView = useInView(sliderRef, { once: true });
   const isReviewsInView = useInView(reviewsRef, { once: true });
+  const isLocationInView = useInView(locationRef, { once: true });
 
   return (
     <div className="home-page">
@@ -86,7 +89,7 @@ export default function HomePage() {
             text="Під час боїв під Ізюмом навесні 2022 року військовий Михайло Юрчук отримав складне поранення. Внаслідок цього чоловік втратив руку та ногу. Спочатку йому встановили протез ноги, а нещодавно сучасний біонічний протез руки. Завдяки спеціальним сенсорам він може відтворювати звичні рухи."
             imageUrl="/images/card2.jpg"
             articleUrl="https://suspilne.media/lviv/282544-treba-ziti-dali-istoria-ukrainskogo-voina-mihajla-urcuka-akomu-vstanovili-bionicnij-protez/"
-            />
+          />
           <StoryCard
             title="Технологія, що повернула радість"
             text="Яків Балакірев – військовий, який до повномасштабної війни працював веброзробником. У 2022 році він отримав повістку й без вагань став до лав захисників. Спочатку проходив навчання у Львові, потім служив у 32-му реактивним артилерійському полку, а згодом — у 37-й бригаді під Авдіївкою."
@@ -94,6 +97,14 @@ export default function HomePage() {
             articleUrl="https://forbes.ua/war-in-ukraine/maybutne-pochinaetsya-sogodni-istorii-ukrainskikh-zakhisnikiv-yaki-pislya-protezuvannya-povertayutsya-do-zhittya-ta-vtilyuyut-mrii-29022024-19472"
           />
         </div>
+
+        <motion.div
+          ref={locationRef}
+          animate={isLocationInView ? { y: [50, 0], opacity: [0, 1] } : {}}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <Location />
+        </motion.div>
       </div>
     </div>
   );

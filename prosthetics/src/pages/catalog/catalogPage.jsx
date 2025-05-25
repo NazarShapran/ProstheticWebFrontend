@@ -4,6 +4,7 @@ import SearchBar from "./components/searchBar";
 import useSearch from "./hooks/useSearch";
 import { useGetAllProsthetics } from "./hooks/useGetAllProsthetics";
 import { useFilteredProsthetics } from "./hooks/useFilteredProthetics";
+import { CircularProgress } from "@mui/material";
 import "./catalogStyles.css";
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ const CatalogPage = () => {
     weightRange: [0, 10],
   });
 
-  const filteredProsthetics = useFilteredProsthetics({
+  const { results: filteredProsthetics, isFiltering } = useFilteredProsthetics({
     prosthetics,
     searchQuery,
     filters: filters.filters,
@@ -30,6 +31,20 @@ const CatalogPage = () => {
   const handleLoadMore = async () => {
     await loadMore();
   };
+
+  const renderLoadingState = () => (
+    <div className="loading-container">
+      <CircularProgress style={{ color: '#73A965' }} />
+      <p>Завантаження протезів...</p>
+    </div>
+  );
+
+  const renderFilteringState = () => (
+    <div className="loading-container filtering">
+      <CircularProgress style={{ color: '#73A965' }} />
+      <p>Застосування фільтрів...</p>
+    </div>
+  );
 
   return (
     <div className="catalog-page">
@@ -41,7 +56,9 @@ const CatalogPage = () => {
       <div className="catalog-content">
         <div className="product-list">
           {loading && prosthetics.length === 0 ? (
-            <p>Завантаження...</p>
+            renderLoadingState()
+          ) : isFiltering ? (
+            renderFilteringState()
           ) : (
             <>
               <ProductCard filteredProsthetics={filteredProsthetics} />
@@ -52,7 +69,14 @@ const CatalogPage = () => {
                     onClick={handleLoadMore}
                     disabled={loading}
                   >
-                    {loading ? "Завантаження..." : "Показати більше"}
+                    {loading ? (
+                      <div className="button-loading">
+                        <CircularProgress size={20} style={{ color: '#fff' }} />
+                        <span>Завантаження...</span>
+                      </div>
+                    ) : (
+                      "Показати більше"
+                    )}
                   </button>
                 </div>
               )}

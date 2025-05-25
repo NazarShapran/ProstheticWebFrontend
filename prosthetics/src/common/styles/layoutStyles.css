@@ -145,7 +145,7 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  padding: 60px 0 60px 0;
+  padding: 60px 0 20px 0;
 }
 
 .footer-socials {
@@ -174,6 +174,13 @@
 
 .footer-socials a:hover {
   color: #ffffff;
+}
+
+.footer-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .footer-text-primary {
@@ -208,7 +215,7 @@
   border-radius: 50px;
   border: 2px solid #73A965;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   font-family: secondary-semibold;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -226,7 +233,7 @@
   padding: 16px 30px;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   font-family: secondary-regular;
   transition: color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
@@ -290,40 +297,3 @@
   color: #73A965;
 }
 
-.nav-button {
-  background-color: #73A965;
-  color: #262626;
-  border: none;
-  border-radius: 24px;
-  padding: 12px 24px;
-  font-family: secondary-semibold;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.footer-link {
-  color: #73A965;
-  text-decoration: none;
-  font-family: secondary-medium;
-  transition: color 0.3s ease;
-}
-
-.footer-button {
-  border: 2px solid #73A965;
-  color: #262626;
-  background: none;
-  padding: 12px 24px;
-  border-radius: 24px;
-  font-family: secondary-regular;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.footer-text {
-  color: #73A965;
-  font-family: secondary-regular;
-  font-size: 14px;
-  margin: 0;
-}

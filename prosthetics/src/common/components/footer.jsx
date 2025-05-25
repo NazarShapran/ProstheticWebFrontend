@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Instagram,
-  Facebook,
-  Twitter,
-  Telegram,
-} from "@mui/icons-material";
+import { Instagram, Facebook, Twitter, Telegram } from "@mui/icons-material";
 import Phone from "../../assets/phone.svg?react";
 import Email from "../../assets/email.svg?react";
 import CustomLink from "./CustomLink";
@@ -13,12 +8,14 @@ const Footer = () => {
   return (
     <footer className="layout-footer">
       <div className="footer-container">
-        <p className="footer-text-primary">
-          Допомагаємо українським захисникам повернутись до активного життя.
-        </p>
-        <p className="footer-text-secondary">
-          Обирайте протез та залишайте заявку просто зараз!
-        </p>
+        <div className="footer-text-container">
+          <p className="footer-text-primary">
+            Допомагаємо українським захисникам повернутись до активного життя.
+          </p>
+          <p className="footer-text-secondary">
+            Обирайте протез та залишайте заявку просто зараз!
+          </p>
+        </div>
         <div className="footer-actions">
           <CustomLink to="/form">
             <button className="footer-btn-cta">Залишити заявку</button>

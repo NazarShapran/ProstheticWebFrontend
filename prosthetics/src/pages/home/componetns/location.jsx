@@ -7,7 +7,6 @@ import phoneIcon from '../../../assets/phone.svg';
 import emailIcon from '../../../assets/email.svg';
 
 const Location = () => {
-  // Координати центру Львова
   const position = [49.8397, 24.0297];
   const markerPosition = [49.837580, 24.026716];
 
@@ -20,13 +19,15 @@ const Location = () => {
 
   return (
     <section className="location-section">
-      <div className="location-content">
+      <div className="location-title">
         <h2>Наше розташування</h2>
         <p className="location-description">
           Ми знаходимося в самому серці Львова, що робить нас легкодоступними для всіх, 
           хто потребує наших послуг. Завітайте до нас, щоб отримати професійну консультацію 
           та підтримку.
         </p>
+      </div>
+      <div className="location-content">
         <div className="contact-info">
           <div className="contact-item">
             <img src={mapMarker} alt="location" />

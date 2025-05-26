@@ -1,0 +1,153 @@
+.consultation-section {
+    padding: 80px 0;
+}
+
+.consultation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+}
+
+.consultation-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.consultation-image {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 32px;
+    object-fit: cover;
+}
+
+.consultation-content-form-wrapper {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.consultation-content {
+    margin-bottom: 0;
+}
+
+.consultation-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.consultation-content p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.contact-info a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info a:hover {
+    color: #007bff;
+}
+
+.consultation-form {
+    margin-top: 24px;
+    flex: 1;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 1024px) {
+    .consultation-container {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .consultation-image {
+        max-width: 100%;
+        width: 100%;
+    }
+    .consultation-content-form-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .consultation-section {
+        padding: 32px 0;
+    }
+    .consultation-container {
+        flex-direction: column;
+        gap: 24px;
+        padding: 0 8px;
+    }
+    .consultation-image {
+        max-width: 100%;
+        width: 100%;
+    }
+    .consultation-content-form-wrapper {
+        width: 100%;
+    }
+    .consultation-form {
+        padding: 24px 12px;
+    }
+    .consultation-content h2 {
+        font-size: 2rem;
+    }
+} 

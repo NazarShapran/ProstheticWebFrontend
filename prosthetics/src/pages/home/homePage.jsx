@@ -6,6 +6,7 @@ import "./homeStyles.css";
 import Partners from "./componetns/partners";
 import Reviews from './componetns/reviews';
 import Location from './componetns/location';
+import ConsultationForm from './componetns/ConsultationForm';
 
 export default function HomePage() {
   const partnersRef = React.useRef(null);
@@ -98,6 +99,7 @@ export default function HomePage() {
           />
         </div>
 
+        <ConsultationForm />
         <motion.div
           ref={locationRef}
           animate={isLocationInView ? { y: [50, 0], opacity: [0, 1] } : {}}

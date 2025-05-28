@@ -223,11 +223,14 @@
   border: none;
   border-radius: 28px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: 1.5px solid #73A965;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .home-card-button-cta:hover {
-  background-color: #496B40;
+  transform: translateY(-2px);
+  background-color: transparent;
+  color: #fff;
 }
 
 .home-card-button-secondary {
@@ -239,13 +242,11 @@
   border: 1.5px solid #73A965;
   border-radius: 28px;
   cursor: pointer;
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .home-card-button-secondary:hover {
-  color: #496B40;
-  border-color: #496B40;
-  background-color: transparent;
+  transform: translateY(-2px);
 }
 
 .corner-accent {

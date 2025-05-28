@@ -18,7 +18,7 @@
 .back-button {
   background: none;
   border: none;
-  color: #73A965;
+  color: #333;
   font-family: secondary-medium;
   font-size: 16px;
   cursor: pointer;
@@ -28,7 +28,9 @@
 }
 
 .back-button:hover {
-  color: #4BBFA0;
+  color: #73a965;
+  background-color: transparent;
+  border-bottom: 2px solid #73a965;
 }
 
 .prosthetic-details-content {
@@ -38,7 +40,7 @@
   background: white;
   border-radius: 24px;
   padding: 32px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .prosthetic-details-image-section {
@@ -171,10 +173,11 @@
   font-family: secondary-medium;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 2px solid #73a965;
 }
 
 .request-button:hover {
-  background-color: #73a965b1;
+  background-color: transparent;
   transform: translateY(-2px);
 }
 

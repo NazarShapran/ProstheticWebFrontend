@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './consultationFormStyles.css';
+import phoneIcon from '../../../assets/phone.svg';
+import emailIcon from '../../../assets/email.svg';
+import personIcon from '../../../assets/person-green.svg';
 
 const ConsultationForm = () => {
     const [formData, setFormData] = useState({
@@ -39,12 +42,19 @@ const ConsultationForm = () => {
                         <h2>Не знаєш який протез обрати?</h2>
                         <p>Залиш заявку на консультацію, де наші спеціалісти проведуть обстеження та допоможуть обрати потрібний протез</p>
                         <div className="contact-info">
-                            <a href="tel:+380322582111">+380 (32) 258-21-11</a>
-                            <a href="mailto:info@prosthetics.com">info@prosthetics.com</a>
+                            <a href="tel:+380322582111">
+                                <img src={phoneIcon} alt="Phone" className="contact-icon" />
+                                +380 (32) 258-21-11
+                            </a>
+                            <a href="mailto:info@prosthetics.com">
+                                <img src={emailIcon} alt="Email" className="contact-icon" />
+                                info@prosthetics.com
+                            </a>
                         </div>
                     </div>
                     <form className="consultation-form" onSubmit={handleSubmit}>
                         <div className="form-group">
+                            <img src={personIcon} alt="Person" className="input-icon" />
                             <input
                                 type="text"
                                 name="fullName"
@@ -55,6 +65,7 @@ const ConsultationForm = () => {
                             />
                         </div>
                         <div className="form-group">
+                            <img src={emailIcon} alt="Email" className="input-icon" />
                             <input
                                 type="email"
                                 name="email"
@@ -65,6 +76,7 @@ const ConsultationForm = () => {
                             />
                         </div>
                         <div className="form-group">
+                            <img src={phoneIcon} alt="Phone" className="input-icon" />
                             <input
                                 type="tel"
                                 name="phone"

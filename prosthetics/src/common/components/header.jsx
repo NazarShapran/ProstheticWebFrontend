@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../common/svgs/logo.svg?react";
-import Person from "../../assets/person-white.svg?react";
+import PersonWhite from "../../assets/person-white.svg?react";
+import PersonGreen from "../../assets/person-green.svg?react";
 import CustomLink from "./CustomLink";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHeaderHovered, setIsHeaderHovered] = useState(false);
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
@@ -18,19 +20,15 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Clear any existing scroll timeout
       clearTimeout(scrollTimeout);
       
-      // Show header on any scroll
       setIsVisible(true);
       setIsScrolling(true);
 
-      // Set a timeout to detect when scrolling stops
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
         
-        // Only start hide timeout if not at top and not hovered
-        if (currentScrollY > 0 && !isHovered) {
+        if (currentScrollY > 0 && !isHeaderHovered) {
           clearTimeout(hideTimeout);
           hideTimeout = setTimeout(() => {
             setIsVisible(false);
@@ -49,7 +47,7 @@ const Header = () => {
     };
 
     // Initial visibility logic
-    if (!isHovered && window.scrollY > 0) {
+    if (!isHeaderHovered && window.scrollY > 0) {
       hideTimeout = setTimeout(() => {
         if (!isScrolling) {
           setIsVisible(false);
@@ -66,7 +64,7 @@ const Header = () => {
       clearTimeout(hideTimeout);
       clearTimeout(scrollTimeout);
     };
-  }, [isHovered, isScrolling]);
+  }, [isHeaderHovered, isScrolling]);
 
   const handleCabinetClick = () => {
     const token = localStorage.getItem("token");
@@ -81,12 +79,11 @@ const Header = () => {
     <header 
       className={`header-container ${isVisible ? 'visible' : 'hidden'}`}
       onMouseEnter={() => {
-        setIsHovered(true);
+        setIsHeaderHovered(true);
         setIsVisible(true);
       }}
       onMouseLeave={() => {
-        setIsHovered(false);
-        // Only start hide timeout if not at top and not scrolling
+        setIsHeaderHovered(false);
         if (window.scrollY > 0 && !isScrolling) {
           setTimeout(() => {
             setIsVisible(false);
@@ -112,8 +109,14 @@ const Header = () => {
           className="header-cabinet-btn"
           id="btnSignIn"
           onClick={handleCabinetClick}
+          onMouseEnter={() => setIsButtonHovered(true)}
+          onMouseLeave={() => setIsButtonHovered(false)}
         >
-          <Person className="header-cabinet-icon" />
+          {isButtonHovered ? (
+            <PersonGreen className="header-cabinet-icon" />
+          ) : (
+            <PersonWhite className="header-cabinet-icon" />
+          )}
           Кабінет
         </button>
       </div>

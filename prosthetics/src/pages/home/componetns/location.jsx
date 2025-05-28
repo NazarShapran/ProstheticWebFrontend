@@ -28,7 +28,7 @@ const Location = () => {
         </p>
       </div>
       <div className="location-content">
-        <div className="contact-info">
+        <div className="contact-info-location">
           <div className="contact-item">
             <img src={mapMarker} alt="location" />
             <span>вул. Степана Бандери, 12, Львів</span>

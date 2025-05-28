@@ -4,24 +4,26 @@ import Slider from "./componetns/slider";
 import StoryCard from "./componetns/cards";
 import "./homeStyles.css";
 import Partners from "./componetns/partners";
-import Reviews from './componetns/reviews';
-import Location from './componetns/location';
-import ConsultationForm from './componetns/ConsultationForm';
+import Reviews from "./componetns/reviews";
+import Location from "./componetns/location";
+import ConsultationForm from "./componetns/ConsultationForm";
 
 export default function HomePage() {
   const partnersRef = React.useRef(null);
   const sliderRef = React.useRef(null);
   const reviewsRef = React.useRef(null);
+  const consultationRef = React.useRef(null);
   const locationRef = React.useRef(null);
 
   const isPartnersInView = useInView(partnersRef, { once: true });
   const isSliderInView = useInView(sliderRef, { once: true });
   const isReviewsInView = useInView(reviewsRef, { once: true });
+  const isConsultationInView = useInView(consultationRef, {once: true});
   const isLocationInView = useInView(locationRef, { once: true });
 
   return (
     <div className="home-page">
-      <motion.div 
+      <motion.div
         className="home-hero-container"
         animate={{ opacity: [0, 1] }}
         transition={{ duration: 0.8 }}
@@ -33,7 +35,7 @@ export default function HomePage() {
           animate={{ scale: [1.2, 1] }}
           transition={{ duration: 1.2 }}
         />
-        <motion.div 
+        <motion.div
           className="home-hero-text-content"
           animate={{ x: [-100, 0], opacity: [0, 1] }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -44,7 +46,7 @@ export default function HomePage() {
           >
             Твоя сила – <br />у твоїх кроках!
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="home-hero-text"
             animate={{ y: [20, 0], opacity: [0, 1] }}
             transition={{ delay: 0.7, duration: 0.8 }}
@@ -61,7 +63,7 @@ export default function HomePage() {
         >
           <Partners />
         </motion.div>
-        
+
         <motion.div
           ref={sliderRef}
           animate={isSliderInView ? { y: [50, 0], opacity: [0, 1] } : {}}
@@ -69,7 +71,7 @@ export default function HomePage() {
         >
           <Slider />
         </motion.div>
-        
+
         <motion.div
           ref={reviewsRef}
           animate={isReviewsInView ? { y: [50, 0], opacity: [0, 1] } : {}}
@@ -77,7 +79,10 @@ export default function HomePage() {
         >
           <Reviews />
         </motion.div>
-        
+
+        <h2 className="home-stories-title">
+          Надихаючі історії наших захисників
+        </h2>
         <div className="home-stories">
           <StoryCard
             title="Історичне сходження"
@@ -98,8 +103,14 @@ export default function HomePage() {
             articleUrl="https://forbes.ua/war-in-ukraine/maybutne-pochinaetsya-sogodni-istorii-ukrainskikh-zakhisnikiv-yaki-pislya-protezuvannya-povertayutsya-do-zhittya-ta-vtilyuyut-mrii-29022024-19472"
           />
         </div>
+        <motion.div
+          ref={consultationRef}
+          animate={isConsultationInView ? { y: [50, 0], opacity: [0, 1] } : {}}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <ConsultationForm />
+        </motion.div>
 
-        <ConsultationForm />
         <motion.div
           ref={locationRef}
           animate={isLocationInView ? { y: [50, 0], opacity: [0, 1] } : {}}

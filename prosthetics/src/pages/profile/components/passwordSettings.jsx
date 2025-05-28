@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import LockIcon from "@mui/icons-material/Lock";
+import Key from "../../../assets/key-green.svg?react";
+import EditIcon from "../../../assets/edit.svg?react";
 import { userUserFromLocalStorage } from "../hooks/userUserFromLocalStorage";
 import { useUpdatePassword } from "../hooks/useUpdatePassword";
 
@@ -26,18 +27,27 @@ const ChangePassword = () => {
 
   return (
     <div className="profile-section change-password">
-      <div className="profile-section-header-change-password">
+      <div className="profile-section-header">
         <h3>Налаштування кабінету</h3>
-        <h4 className="change-password-title">Зміна пароля</h4>
+        <div className="button-group">
+          <button
+            type="submit"
+            disabled={loading}
+            className="edit-btn"
+          >
+            <EditIcon />
+            {loading ? "Збереження..." : "Змінити пароль"}
+          </button>
+        </div>
       </div>
       {error?.general && <div className="error-message">{error.general}</div>}
-      <form onSubmit={handleSubmit}>
+      <form id="change-password-form" onSubmit={handleSubmit}>
         <div className="profile-section-content">
           <div className="column">
             <div className="input-wrapper">
               <label>Введіть новий пароль</label>
               <div className="input-with-icon">
-                <LockIcon className="input-icon" />
+                <Key className="input-icon" />
                 <input
                   type="password"
                   value={newPassword}
@@ -52,7 +62,7 @@ const ChangePassword = () => {
             <div className="input-wrapper">
               <label>Підтвердіть новий пароль</label>
               <div className="input-with-icon">
-                <LockIcon className="input-icon" />
+                <Key className="input-icon" />
                 <input
                   type="password"
                   value={confirmNewPassword}
@@ -62,11 +72,6 @@ const ChangePassword = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="button-group">
-          <button type="submit" disabled={loading}>
-            {loading ? "Збереження..." : "Змінити пароль"}
-          </button>
         </div>
       </form>
     </div>

@@ -25,7 +25,7 @@
   
   .catalog-content {
     display: flex;
-    margin: 20px;
+    margin: 40px 0;
     gap: 20px;
   }
     
@@ -258,7 +258,8 @@
   .load-more-button {
     background-color: transparent;
     border: 2px solid #73A965;
-    color: #73A965;
+    font-size: 16px;
+    color: #333;
     padding: 10px 20px;
     border-radius: 24px;
     cursor: pointer;

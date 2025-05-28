@@ -93,6 +93,7 @@
 
   .how-it-works-container h1 {
     font-size: 48px;
+    text-align: center;
     color: #73A965;
   }
   
@@ -162,7 +163,7 @@
   
   .faq-container h1 {
     font-size: 48px;
-    text-align: start;
+    text-align: center;
     color: #73A965;
     margin-bottom: 40px;
   }
@@ -190,7 +191,7 @@
   
   .faq-item:hover {
     border-left: 4px solid #73A965;
-    background-color: #f1fdfb;
+    background-color: #73a96515;
   }
   
   .faq-header {

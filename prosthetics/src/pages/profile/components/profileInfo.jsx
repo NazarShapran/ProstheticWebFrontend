@@ -7,24 +7,24 @@ import Person from "../../../assets/person-green.svg?react";
 import Phone from "../../../assets/phone.svg?react";
 import Date from "../../../assets/date.svg?react";
 import Email from "../../../assets/email.svg?react";
-import Edit from "../../../assets/edit.svg?react";
 import Exit from "../../../assets/exit.svg?react";
 import Cancel from "../../../assets/cancel.svg?react";
 import Confirm from "../../../assets/confirm.svg?react";
+import EditIcon from "../../../assets/edit.svg?react";
+import SnackbarAlert from "../../../common/components/SnackbarAlert";
 
 const PersonalInfo = () => {
-  const user = userUserFromLocalStorage();
   const logout = useLogout();
   const [isEditing, setIsEditing] = useState(false);
   const {
     formValues,
     loading,
-    showAlert,
-    alertMessage,
+    invalidFields,
+    snackbar,
     handleChange,
     updateUserDetails,
     resetForm,
-    setShowAlert,
+    setSnackbar
   } = useUpdateUserDetails();
 
   const handleSubmit = async () => {
@@ -54,21 +54,21 @@ const PersonalInfo = () => {
           <CircularProgress style={{ color: '#73A965' }} />
         </div>
       )}
+      <SnackbarAlert
+        open={snackbar.open}
+        message={snackbar.message}
+        severity={snackbar.severity}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+      />
       <div className="profile-section-header">
         <h3>Особиста інформація</h3>
-        {showAlert && (
-          <div
-            className={`alert ${
-              alertMessage.includes("успішно") ? "success" : "error"
-            }`}
-          >
-            {alertMessage}
-          </div>
-        )}
         <div className="profile-section-button-group">
           {!isEditing ? (
             <>
-              <Edit className="edit-btn" onClick={() => setIsEditing(true)} />
+              <button className="edit-btn" onClick={() => setIsEditing(true)}>
+                <EditIcon />
+                Змінити
+              </button>
               <Exit className="logout-btn" onClick={logout} />
             </>
           ) : (
@@ -101,6 +101,7 @@ const PersonalInfo = () => {
                 onChange={handleChange}
                 readOnly={!isEditing}
                 style={inputStyle}
+                className={invalidFields.fullName ? "error" : ""}
               />
             </div>
           </div>
@@ -115,6 +116,7 @@ const PersonalInfo = () => {
                 onChange={handleChange}
                 readOnly={!isEditing}
                 style={inputStyle}
+                className={invalidFields.phoneNumber ? "error" : ""}
               />
             </div>
           </div>
@@ -129,9 +131,10 @@ const PersonalInfo = () => {
                 name="birthDate"
                 value={formValues.birthDate}
                 onChange={handleChange}
-                placeholder="DD.MM.YYYY"
+                placeholder="ДД.ММ.РРРР"
                 readOnly={!isEditing}
                 style={inputStyle}
+                className={invalidFields.birthDate ? "error" : ""}
               />
             </div>
           </div>
@@ -146,6 +149,7 @@ const PersonalInfo = () => {
                 onChange={handleChange}
                 readOnly={!isEditing}
                 style={inputStyle}
+                className={invalidFields.email ? "error" : ""}
               />
             </div>
           </div>

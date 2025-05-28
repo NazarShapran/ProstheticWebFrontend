@@ -35,7 +35,7 @@ const SubmittedApplications = () => {
 
   if (requests.length === 0) {
     return (
-      <div className="empty-state">
+      <div className="empty-state-applications">
         <EmptyBro className="empty-illustration" />
         <h3>У вас ще немає заявок</h3>
         <p className="empty-text">
@@ -52,12 +52,14 @@ const SubmittedApplications = () => {
   return (
     <div className="profile-section applications">
       <h3 className="profile-section-header">Подані заявки</h3>
+      <div className="profile-section-applications-content">
+
       {requests.map((app, index) => (
         <div key={index} className="application-item">
           <div className="application-details">
             <span className="application-title">{app.prosthetic.title}</span>
             <div className="date-status-group">
-              <span className="application-date">{new Date(app.date).toLocaleDateString()}</span>
+              {/* <span className="application-date">{new Date(app.date).toLocaleDateString()}</span> */}
               <div className="application-status">
                 {getStatusIcon(app.status.title)}
                 <span className="status-text">{app.status.title}</span>
@@ -67,6 +69,7 @@ const SubmittedApplications = () => {
           <hr className="application-divider" />
         </div>
       ))}
+      </div>
     </div>
   );
 };

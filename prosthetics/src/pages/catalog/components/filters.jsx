@@ -8,6 +8,7 @@ const Filters = ({ onFilterChange }) => {
     functionality: [],
     amputationLevel: [],
     material: [],
+    status: [],
   });
 
   const [weight, setWeight] = useState([0, 10]);
@@ -40,6 +41,10 @@ const Filters = ({ onFilterChange }) => {
       { value: "Пластик", label: "Пластик" },
       { value: "Металеві сплави", label: "Металеві сплави" },
     ],
+    status: [
+      { value: "Доступно", label: "Доступно" },
+      { value: "Не доступно", label: "Не доступно" },
+    ],
   };
 
   useEffect(() => {
@@ -49,6 +54,7 @@ const Filters = ({ onFilterChange }) => {
       functionality: selectedFilters.functionality.map(option => option.value),
       amputationLevel: selectedFilters.amputationLevel.map(option => option.value),
       material: selectedFilters.material.map(option => option.value),
+      status: selectedFilters.status.map(option => option.value),
     };
     onFilterChange({ filters: simplifiedFilters, weightRange: weight });
   }, [selectedFilters, weight, onFilterChange]);
@@ -152,6 +158,18 @@ const Filters = ({ onFilterChange }) => {
           onChange={(selected) => handleSelectChange('material', selected)}
           styles={customStyles}
           placeholder="Оберіть матеріал"
+        />
+      </div>
+
+      <div className="filter-group">
+        <h4>Статус</h4>
+        <Select
+          isMulti
+          options={options.status}
+          value={selectedFilters.status}
+          onChange={(selected) => handleSelectChange('status', selected)}
+          styles={customStyles}
+          placeholder="Оберіть статус"
         />
       </div>
 

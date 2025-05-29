@@ -58,15 +58,15 @@ export default function ProstheticDetailsPage() {
           <div className="prosthetic-details-status">
             <span
               className={`status-indicator ${
-                prosthetic.status === "Available" ? "available" : "unavailable"
+                prosthetic.status.title === "Доступно" ? "available" : "unavailable"
               }`}
             >
               <img 
-                src={prosthetic.status === "Available" ? availableIcon : unavailableIcon}
-                alt={prosthetic.status === "Available" ? "Доступно" : "Не доступно"}
+                src={prosthetic.status.title === "Доступно" ? availableIcon : unavailableIcon}
+                alt={prosthetic.status.title === "Доступно" ? "Доступно" : "Не доступно"}
                 className="prosthetic-details-status-icon"
               />
-              {prosthetic.status === "Available" ? "Доступно" : "Не доступно"}
+              {prosthetic.status.title === "Доступно" ? "Доступно" : "Не доступно"}
             </span>
           </div>
 
@@ -130,7 +130,8 @@ export default function ProstheticDetailsPage() {
           <div className="prosthetic-details-actions">
             <button
               onClick={handleRequestClick}
-              className="request-button"
+              className={`request-button ${prosthetic.status.title !== "Доступно" ? "request-button-disabled" : ""}`}
+              disabled={prosthetic.status.title !== "Доступно"}
             >
               Залишити заявку
             </button>

@@ -68,12 +68,12 @@ const ProductCard = ({ filteredProsthetics }) => {
             <div className="info-item status-item">
               <span
                 className={`info-value ${
-                  prosthetic.status === "Available"
+                  prosthetic.status.title === "Доступно"
                     ? "available-text"
                     : "unavailable-text"
                 }`}
               >
-                {prosthetic.status === "Available" ? "Доступно" : "Не доступно"}
+                {prosthetic.status.title === "Доступно" ? "Доступно" : "Не доступно"}
               </span>
             </div>
           </div>

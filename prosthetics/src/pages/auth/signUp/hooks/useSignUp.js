@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { SignUpService } from "../service/signUpService";
+import { useNavigate } from "react-router-dom";
 
 export const useSignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleRegister = async (fullname, phoneNumber, email, password, birthDate) => {
     setError(null);
@@ -13,7 +15,7 @@ export const useSignUp = () => {
     const signal = controller.signal;
 
     try {
-      const response = await SignUpService.signUp(
+      await SignUpService.signUp(
         fullname,
         phoneNumber,
         email,
@@ -21,11 +23,23 @@ export const useSignUp = () => {
         birthDate,
         signal
       );
-      console.log("Registration successful:", response);
-      window.location.href = "/signin";
-      return { success: true };
+
+      try {
+        await SignUpService.autoLogin(email, password, signal);
+        
+        navigate('/');
+        
+        return { success: true };
+      } catch (loginErr) {
+        console.error('Помилка автоматичного входу:', loginErr);
+        navigate('/signin');
+        return { 
+          success: false, 
+          error: "Реєстрація успішна, але виникла помилка при автоматичному вході. Будь ласка, увійдіть вручну." 
+        };
+      }
     } catch (err) {
-      console.error(err);
+      console.error('Помилка реєстрації:', err);
       const errorMessage = err.response?.data?.message || "Помилка реєстрації. Спробуйте ще раз.";
       setError(errorMessage);
       return { 

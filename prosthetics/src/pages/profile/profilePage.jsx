@@ -16,7 +16,7 @@ const ProfilePage = () => {
   const tabs = [
     { 
       id: "cabinet", 
-      label: "Кабінет", 
+      label: "Особиста інформація", 
       icon: personIcon,
       component: <PersonalInfo /> 
     },

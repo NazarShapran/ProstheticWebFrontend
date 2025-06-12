@@ -18,6 +18,18 @@ const ProductCard = ({ filteredProsthetics }) => {
     navigate(`/catalog/${prostheticId}`);
   };
 
+  const getProstheticImage = (amputationLevel) => {
+    const handLevels = ["Кистьовий", "Передплічний", "Плечовий"];
+    const legLevels = ["Стопа", "Гомілковий", "Стегновий", "Гіп-дізарткуляційний"];
+    if (handLevels.includes(amputationLevel)) {
+      return "/images/slider2.png";
+    }
+    if (legLevels.includes(amputationLevel)) {
+      return "/images/slider3.png";
+    }
+    return "/images/slider2.png";
+  };
+
   return (
     <>
       {filteredProsthetics.map((prosthetic) => (
@@ -34,7 +46,7 @@ const ProductCard = ({ filteredProsthetics }) => {
           }}
         >
           <img
-            src="/images/slider2.png"
+            src={getProstheticImage(prosthetic.amputationLevel.title)}
             alt={prosthetic.title}
             className="product-image"
           />

@@ -15,6 +15,18 @@ export default function SliderEmblaSimple() {
   );
   const navigate = useNavigate();
 
+  const getProstheticImage = (amputationLevel) => {
+    const handLevels = ["Кистьовий", "Передплічний", "Плечовий"];
+    const legLevels = ["Стопа", "Гомілковий", "Стегновий", "Гіп-дізарткуляційний"];
+    if (handLevels.includes(amputationLevel)) {
+      return "/images/slider2.png";
+    }
+    if (legLevels.includes(amputationLevel)) {
+      return "/images/slider3.png";
+    }
+    return "/images/slider2.png";
+  };
+
   const limitedProsthetics = prosthetics.slice(0, 6);
 
   const handleRequestClick = () => {
@@ -50,7 +62,7 @@ export default function SliderEmblaSimple() {
                 <div className="glass-overlay"></div>
                 <img
                   className="card-image"
-                  src={p.imageUrl || "/images/slider2.png"}
+                  src={p.imageUrl || getProstheticImage(p.amputationLevel?.title)}
                   alt={p.title}
                 />
                 <div className="card-content">

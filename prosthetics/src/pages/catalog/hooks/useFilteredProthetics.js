@@ -34,6 +34,10 @@ export const useFilteredProsthetics = ({
           item.material.title,
           filters.material
         );
+        const matchesStatus = matchesFilter(
+          item.status.title,
+          filters.status
+        );
         
         const matchesWeight =
           item.weight >= weightRange[0] && item.weight <= weightRange[1];
@@ -44,6 +48,7 @@ export const useFilteredProsthetics = ({
           matchesFunctionality &&
           matchesAmputationLevel &&
           matchesMaterial &&
+          matchesStatus &&
           matchesWeight
         );
       });

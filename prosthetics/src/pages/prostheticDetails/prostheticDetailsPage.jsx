@@ -21,6 +21,18 @@ export default function ProstheticDetailsPage() {
     navigate('/form', { state: { selectedProstheticId: id } });
   };
 
+  const getProstheticImage = (amputationLevel) => {
+    const handLevels = ["Кистьовий", "Передплічний", "Плечовий"];
+    const legLevels = ["Стопа", "Гомілковий", "Стегновий", "Гіп-дизарткуляційний"];
+    if (handLevels.includes(amputationLevel)) {
+      return "/images/slider2.png";
+    }
+    if (legLevels.includes(amputationLevel)) {
+      return "/images/slider3.png";
+    }
+    return "/images/slider2.png";
+  };
+
   if (loading) {
     return <div className="prosthetic-details-loading">Завантаження...</div>;
   }
@@ -46,7 +58,7 @@ export default function ProstheticDetailsPage() {
       <div className="prosthetic-details-content">
         <div className="prosthetic-details-image-section">
           <img
-            src="/images/slider2.png"
+            src={getProstheticImage(prosthetic.amputationLevel.title)}
             alt={prosthetic.title}
             className="prosthetic-details-image"
           />

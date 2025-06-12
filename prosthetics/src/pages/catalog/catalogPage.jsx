@@ -17,6 +17,7 @@ const CatalogPage = () => {
       functionality: [],
       amputationLevel: [],
       material: [],
+      status: [],
     },
     weightRange: [0, 10],
   });
